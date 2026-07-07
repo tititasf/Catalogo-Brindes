@@ -1,0 +1,6 @@
+{
+  "name": "Mostruário Digital de Brindes Corporativos",
+  "description": "Galeria de arte de alta conversão B2B com simulador interativo de personalização para brindes corporativos e promocionais premium.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
