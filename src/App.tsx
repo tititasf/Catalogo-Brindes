@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from "motion/react";
 import { PRODUCTS } from "./data";
 import { Product, PersonalizationTechnique } from "./types";
 import { ProductVisualizer } from "./components/ProductVisualizer";
-import { LaserSimulator } from "./components/LaserSimulator";
-import { ProductPDP } from "./components/ProductPDP";
+import { CategoryShowcase } from "./components/CategoryShowcase";
+import { SilkSimulator } from "./components/SilkSimulator";
 import { CurationBrief } from "./components/CurationBrief";
 import { AboutUs } from "./components/AboutUs";
 import { ServicesPanel } from "./components/ServicesPanel";
 import { ContactConcierge } from "./components/ContactConcierge";
 import { HomePanel } from "./components/HomePanel";
+import { ProductPDP } from "./components/ProductPDP";
 import { 
   Briefcase, 
   Sparkles, 
@@ -247,9 +248,9 @@ export default function App() {
           </div>
         </div>
 
-        {/* Right: Immersive Laser Engraving Simulator Component */}
+        {/* Right: Immersive Silk Screen Simulator Component */}
         <div className="lg:col-span-7">
-          <LaserSimulator logoText={logoText} brandColor={brandColor} brandFont={brandFont} />
+          <SilkSimulator logoText={logoText} brandColor={brandColor} brandFont={brandFont} />
         </div>
 
       </section>
