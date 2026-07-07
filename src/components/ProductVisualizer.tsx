@@ -104,6 +104,33 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       defaultRotation: 0,
       blendMode: "normal"
     },
+    "sacola-algodao-cru": {
+      url: "/assets/images/dascan/sacola.jpg",
+      defaultX: 50,
+      defaultY: 55,
+      defaultWidth: 30,
+      defaultHeight: 20,
+      defaultRotation: 0,
+      blendMode: "multiply"
+    },
+    "ecobag-colorida": {
+      url: "/assets/images/dascan/ecobag.jpg",
+      defaultX: 50,
+      defaultY: 60,
+      defaultWidth: 40,
+      defaultHeight: 25,
+      defaultRotation: 0,
+      blendMode: "normal"
+    },
+    "kit-necessaire-dupla": {
+      url: "/assets/images/dascan/necessaire.jpg",
+      defaultX: 70,
+      defaultY: 60,
+      defaultWidth: 20,
+      defaultHeight: 15,
+      defaultRotation: 0,
+      blendMode: "normal"
+    },
     "powerbank-magsafe": {
       url: "https://images.unsplash.com/photo-1622445262465-2481c4574875?auto=format&fit=crop&q=80&w=800",
       defaultX: 50,
@@ -132,7 +159,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "normal"
     },
     "caneta-rollerball": {
-      url: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&q=80&w=800",
+      url: "https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&q=80&w=800",
       defaultX: 48,
       defaultY: 46,
       defaultWidth: 12,
@@ -168,7 +195,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "normal"
     },
     "hub-usbc-multi": {
-      url: "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&q=80&w=800",
+      url: "https://images.unsplash.com/photo-1544866347-197e88b89417?auto=format&fit=crop&q=80&w=800",
       defaultX: 50,
       defaultY: 48,
       defaultWidth: 14,
@@ -177,7 +204,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "normal"
     },
     "guarda-chuva-portatil": {
-      url: "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&q=80&w=800",
+      url: "https://images.unsplash.com/photo-1559404283-9eb37f5979c3?auto=format&fit=crop&q=80&w=800",
       defaultX: 45,
       defaultY: 55,
       defaultWidth: 20,
@@ -186,7 +213,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "normal"
     },
     "camiseta-egipcia": {
-      url: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800",
+      url: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800",
       defaultX: 50,
       defaultY: 42,
       defaultWidth: 15,
@@ -222,7 +249,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "multiply"
     },
     "squeeze-silicone": {
-      url: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=800",
+      url: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&q=80&w=800",
       defaultX: 50,
       defaultY: 55,
       defaultWidth: 16,

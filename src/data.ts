@@ -75,6 +75,56 @@ export const PERSONALIZATION_OPTIONS: Record<string, PersonalizationOption> = {
 
 export const PRODUCTS: Product[] = [
   {
+    id: "sacola-algodao-cru",
+    name: "Sacola de Algodão Cru Dascan",
+    category: "lifestyle",
+    description: "Sacola premium em algodão cru de alta gramatura com alças vermelhas reforçadas. Ideal para eventos e feiras corporativas sustentáveis.",
+    longDescription: "Produzida com algodão 100% ecológico, esta ecobag da Dascan apresenta costuras duplas e alças em lona resistente. A cor natural do algodão oferece um contraste perfeito para personalizações em Silk Screen, destacando o logotipo da sua empresa com altíssima definição e durabilidade.",
+    material: "Algodão Cru Ecológico 220g/m²",
+    dimensions: "40 x 35 x 10 cm",
+    minimumQuantity: 100,
+    techniques: ["silk", "dtg"],
+    colors: ["#F5F5DC"],
+    perspectives: [
+      { id: "front", name: "Frente Plana", technique: "silk", description: "Silk Screen em até 4 cores com cobertura total." }
+    ]
+  },
+  {
+    id: "ecobag-colorida",
+    name: "Ecobag Personalizada Dascan",
+    category: "lifestyle",
+    description: "Ecobag colorida encorpada com alças contrastantes. Um brinde vibrante e prático para o dia a dia corporativo.",
+    longDescription: "A Ecobag personalizada da Dascan é o equilíbrio perfeito entre utilidade e presença de marca. Feita com tecido espesso que suporta até 15kg, seu fechamento estruturado e alças amarelas vibrantes criam um design moderno que seus clientes farão questão de usar diariamente.",
+    material: "Sarja de Algodão Colorida 250g/m²",
+    dimensions: "45 x 40 cm",
+    minimumQuantity: 100,
+    techniques: ["silk", "uv"],
+    colors: ["#1E3A8A"],
+    perspectives: [
+      { id: "front", name: "Frente Central", technique: "silk", description: "Impressão serigráfica centralizada de alta precisão." }
+    ]
+  },
+  {
+    id: "kit-necessaire-dupla",
+    name: "Kit Necessaire Dupla Dascan",
+    category: "onboarding",
+    description: "Conjunto exclusivo com duas necessaires premium: uma casual em lona e outra executiva estruturada.",
+    longDescription: "Este kit versátil da Dascan atende a todas as necessidades de viagem do executivo moderno. A primeira peça possui design leve em lona bicolor, enquanto a segunda oferece estrutura rígida com acabamento brilhante e costuras esportivas. Ambas possuem forro impermeável e zíperes tratorados de alta durabilidade.",
+    material: "Lona Premium e PU Estruturado Sintético",
+    dimensions: "Vários Tamanhos",
+    minimumQuantity: 50,
+    techniques: ["silk", "bordado", "laser"],
+    colors: ["#E0F2FE", "#0F172A"],
+    isKit: true,
+    kitItems: [
+      { name: "Necessaire Casual", icon: "Briefcase", description: "Necessaire em lona macia com detalhes em azul claro.", offset: { x: -40, y: 0 } },
+      { name: "Necessaire Executiva", icon: "Briefcase", description: "Necessaire estruturada escura com detalhes em listras brancas.", offset: { x: 40, y: 0 } }
+    ],
+    perspectives: [
+      { id: "front", name: "Visão Geral do Kit", technique: "laser", description: "Gravação a laser nas tags metálicas." }
+    ]
+  },
+  {
     id: "mochila-executiva",
     name: "Mochila Executiva Antifurto",
     category: "executivo",
