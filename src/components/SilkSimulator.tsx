@@ -46,11 +46,11 @@ export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandCol
   };
 
   return (
-    <div className="bg-black/50 backdrop-blur-sm rounded-2xl border border-white/5 hover:border-gold/25 transition-colors overflow-hidden shadow-2xl relative">
+    <div className="bg-white/50 dark:bg-black/50 backdrop-blur-sm rounded-2xl border border-black/5 dark:border-white/5 hover:border-gold/25 transition-colors overflow-hidden shadow-2xl relative">
       <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.05] pointer-events-none" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 items-center relative z-10">
-        <div className="lg:col-span-7 flex flex-col items-center justify-center bg-black/60 rounded-xl border border-white/5 p-6 min-h-[340px] relative overflow-hidden">
+        <div className="lg:col-span-7 flex flex-col items-center justify-center bg-white/60 dark:bg-black/60 rounded-xl border border-black/5 dark:border-white/5 p-6 min-h-[340px] relative overflow-hidden">
           
           {isPrinting && (
             <div className="absolute inset-0 pointer-events-none z-20 flex justify-center">
@@ -110,12 +110,12 @@ export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandCol
             </svg>
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs text-neutral-300 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/5">
+          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs text-neutral-700 dark:text-neutral-300 bg-white/85 dark:bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-black/5 dark:border-white/5">
             <span className="flex items-center gap-1.5 font-mono uppercase">
               <Droplet size={12} className={isPrinting ? "text-gold animate-bounce" : "text-neutral-500"} />
               {isPrinting ? "APLICANDO TINTA..." : hasFinished ? "SECAGEM CONCLUÍDA" : "AGUARDANDO RODO"}
             </span>
-            <span className="font-mono text-neutral-400">
+            <span className="font-mono text-neutral-600 dark:text-neutral-400">
               {isPrinting ? `${Math.round(printProgress)}%` : hasFinished ? "100%" : "0%"}
             </span>
           </div>
@@ -126,10 +126,10 @@ export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandCol
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider bg-gold/10 text-gold border border-gold/25 uppercase font-semibold">
               Tecnologia B2B
             </div>
-            <h3 className="text-xl font-sans font-semibold tracking-tight text-white">
+            <h3 className="text-xl font-sans font-semibold tracking-tight text-black dark:text-white">
               Simulador Silk Screen
             </h3>
-            <p className="text-xs text-neutral-400 leading-relaxed">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
               Experimente o processo da serigrafia adaptado para brindes ecológicos de alto volume. Digite o logotipo e dispare o rodo para transferir a tinta pelo tecido de canvas.
             </p>
           </div>

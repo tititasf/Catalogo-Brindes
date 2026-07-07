@@ -97,29 +97,29 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-white/80 dark:bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
       {/* Container Card */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="bg-[#0a0a0a] border border-white/10 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative"
+        className="bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative"
       >
         {/* Header bar */}
-        <div className="p-6 border-b border-white/5 flex justify-between items-center bg-black/60">
+        <div className="p-6 border-b border-black/5 dark:border-white/5 flex justify-between items-center bg-white/60 dark:bg-black/60">
           <div className="space-y-1">
             <span className="text-[9px] font-mono tracking-[0.25em] text-gold uppercase font-semibold">
               B2B Executive Portal
             </span>
-            <h2 className="text-lg font-sans font-medium text-white flex items-center gap-2">
+            <h2 className="text-lg font-sans font-medium text-black dark:text-white flex items-center gap-2">
               <Briefcase size={16} className="text-gold" />
               {step === 1 ? "Solicitação de Curadoria Premium" : "Projeto de Curadoria Protocolado"}
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-black/60 text-neutral-400 hover:text-white transition-colors"
+            className="p-1.5 rounded-full hover:bg-white/60 dark:bg-black/60 text-neutral-600 dark:text-neutral-400 hover:text-black dark:text-white transition-colors"
           >
             <X size={18} />
           </button>
@@ -139,7 +139,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
               >
                 {/* Left Form: B2B Information */}
                 <div className="md:col-span-7 space-y-5">
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-gold border-b border-white/5 pb-2 font-semibold">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-gold border-b border-black/5 dark:border-white/5 pb-2 font-semibold">
                     01. Informações Corporativas
                   </h3>
 
@@ -154,7 +154,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                         placeholder="Ex: Google Brasil"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors"
+                        className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors"
                       />
                     </div>
                     <div className="space-y-1">
@@ -167,7 +167,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                         placeholder="Ex: Thiago Tasf"
                         value={formData.repName}
                         onChange={(e) => setFormData({ ...formData, repName: e.target.value })}
-                        className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors"
+                        className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors"
                       />
                     </div>
                   </div>
@@ -183,7 +183,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                         placeholder="Ex: executivo@empresa.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors"
+                        className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors"
                       />
                     </div>
                     <div className="space-y-1">
@@ -195,12 +195,12 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                         placeholder="Ex: (11) 98888-7777"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors"
+                        className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors"
                       />
                     </div>
                   </div>
 
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-gold border-b border-white/5 pb-2 pt-2 font-semibold">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-gold border-b border-black/5 dark:border-white/5 pb-2 pt-2 font-semibold">
                     02. Alinhamento de Escopo e Volume
                   </h3>
 
@@ -212,7 +212,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                       <select
                         value={formData.eventObjective}
                         onChange={(e) => setFormData({ ...formData, eventObjective: e.target.value })}
-                        className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors appearance-none"
+                        className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors appearance-none"
                       >
                         <option value="onboarding">Boas-Vindas Onboarding</option>
                         <option value="executivo">Presente C-Level Executivo</option>
@@ -228,7 +228,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                       <select
                         value={formData.targetAudience}
                         onChange={(e) => setFormData({ ...formData, targetAudience: e.target.value })}
-                        className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors appearance-none"
+                        className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors appearance-none"
                       >
                         <option value="executive">Diretoria e Liderança Executiva</option>
                         <option value="tech">Equipes Técnicas / Desenvolvedores</option>
@@ -244,7 +244,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                       <select
                         value={formData.estimatedQuantity}
                         onChange={(e) => setFormData({ ...formData, estimatedQuantity: e.target.value })}
-                        className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors appearance-none"
+                        className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors appearance-none"
                       >
                         <option value="15-49">15 a 49 unidades</option>
                         <option value="50">50 a 99 unidades</option>
@@ -264,22 +264,22 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                       rows={3}
                       value={formData.customNotes}
                       onChange={(e) => setFormData({ ...formData, customNotes: e.target.value })}
-                      className="w-full bg-black/40 border border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-white transition-colors resize-none"
+                      className="w-full bg-white/40 dark:bg-black/40 border border-black/5 dark:border-white/5 focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none rounded-xl p-3 text-xs text-black dark:text-white transition-colors resize-none"
                     />
                   </div>
                 </div>
 
                 {/* Right Form: Selection Grid to refine chosen items */}
                 <div className="md:col-span-5 flex flex-col space-y-5">
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-gold border-b border-white/5 pb-2 font-semibold">
+                  <h3 className="text-xs font-mono uppercase tracking-widest text-gold border-b border-black/5 dark:border-white/5 pb-2 font-semibold">
                     03. Itens do Mostruário Vinculados
                   </h3>
 
-                  <p className="text-[11px] text-neutral-400 leading-relaxed">
+                  <p className="text-[11px] text-neutral-600 dark:text-neutral-400 leading-relaxed">
                     Selecione quais itens de nossa galeria de arte corporativa deseja incluir no estudo de viabilidade estética e técnica:
                   </p>
 
-                  <div className="flex-1 bg-black border border-white/5 rounded-2xl p-4 overflow-y-auto max-h-[220px] space-y-2">
+                  <div className="flex-1 bg-white dark:bg-black border border-black/5 dark:border-white/5 rounded-2xl p-4 overflow-y-auto max-h-[220px] space-y-2">
                     {PRODUCTS.map((p) => {
                       const isSelected = formData.selectedProductIds.includes(p.id);
                       return (
@@ -289,7 +289,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                           className={`flex items-center justify-between p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${
                             isSelected
                               ? "bg-gold/10 border-gold/30 text-gold"
-                              : "bg-transparent border-white/5 hover:border-white/10 text-neutral-400"
+                              : "bg-transparent border-black/5 dark:border-white/5 hover:border-black/10 dark:border-white/10 text-neutral-600 dark:text-neutral-400"
                           }`}
                         >
                           <span className="font-medium truncate pr-4">{p.name}</span>
@@ -305,20 +305,20 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                     })}
                   </div>
 
-                  <div className="p-4 bg-black/40 rounded-2xl border border-white/5 space-y-3">
+                  <div className="p-4 bg-white/40 dark:bg-black/40 rounded-2xl border border-black/5 dark:border-white/5 space-y-3">
                     <div className="flex justify-between text-[11px]">
                       <span className="text-neutral-500">Cor Identidade (HEX):</span>
-                      <span className="font-mono text-neutral-300 font-semibold">{formData.brandColor}</span>
+                      <span className="font-mono text-neutral-700 dark:text-neutral-300 font-semibold">{formData.brandColor}</span>
                     </div>
                     <div className="flex justify-between text-[11px]">
                       <span className="text-neutral-500">Assinatura Logotipo:</span>
-                      <span className="text-neutral-300 font-semibold max-w-[120px] truncate">
+                      <span className="text-neutral-700 dark:text-neutral-300 font-semibold max-w-[120px] truncate">
                         {formData.logoText || "Sabor Original"}
                       </span>
                     </div>
-                    <div className="flex justify-between text-[11px] border-t border-white/5 pt-2">
-                      <span className="text-neutral-400 font-medium">Total de Peças Curadas:</span>
-                      <span className="text-white font-bold">{formData.selectedProductIds.length}</span>
+                    <div className="flex justify-between text-[11px] border-t border-black/5 dark:border-white/5 pt-2">
+                      <span className="text-neutral-600 dark:text-neutral-400 font-medium">Total de Peças Curadas:</span>
+                      <span className="text-black dark:text-white font-bold">{formData.selectedProductIds.length}</span>
                     </div>
                   </div>
 
@@ -357,10 +357,10 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                   <span className="text-[10px] font-mono tracking-[0.3em] text-gold uppercase font-semibold">
                     Protocolo Corporativo Confirmado
                   </span>
-                  <h3 className="text-2xl font-sans font-semibold text-white tracking-tight">
+                  <h3 className="text-2xl font-sans font-semibold text-black dark:text-white tracking-tight">
                     Seu Projeto está sob Análise Estética
                   </h3>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                     Criamos uma folha de estilo e simulação física utilizando as técnicas selecionadas. Um Arquiteto de Produto de nossa equipe foi notificado para validar as amostras com a marca <strong>{formData.companyName}</strong>.
                   </p>
                 </div>
@@ -403,14 +403,14 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                     B2B VIP
                   </div>
 
-                  <div className="flex flex-col sm:flex-row justify-between border-b border-white/5 pb-3">
+                  <div className="flex flex-col sm:flex-row justify-between border-b border-black/5 dark:border-white/5 pb-3">
                     <div className="space-y-1">
                       <span className="text-[9px] uppercase text-neutral-500">CÓDIGO PROTOCOLO</span>
                       <div className="text-xs font-bold text-gold">{projectCode}</div>
                     </div>
                     <div className="space-y-1 mt-2 sm:mt-0 text-left sm:text-right">
                       <span className="text-[9px] uppercase text-neutral-500">DATA SUBMISSÃO</span>
-                      <div className="text-xs text-neutral-300">
+                      <div className="text-xs text-neutral-700 dark:text-neutral-300">
                         {new Date().toLocaleDateString("pt-BR", { hour: "2-digit", minute: "2-digit" })}
                       </div>
                     </div>
@@ -437,7 +437,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                         <span className="text-neutral-500 block uppercase text-[9px]">Matriz de Cores</span>
                         <span className="flex items-center gap-1.5 mt-0.5">
                           <span
-                            className="w-3 h-3 rounded-full border border-neutral-800"
+                            className="w-3 h-3 rounded-full border border-neutral-200 dark:border-neutral-800"
                             style={{ backgroundColor: formData.brandColor }}
                           />
                           <span className="text-neutral-200 font-mono">{formData.brandColor}</span>
@@ -456,9 +456,9 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                     </div>
                   </div>
 
-                  <div className="border-t border-white/5 pt-3 space-y-1">
+                  <div className="border-t border-black/5 dark:border-white/5 pt-3 space-y-1">
                     <span className="text-neutral-500 block uppercase text-[9px]">Próximas Etapas (Próximas 2 Horas)</span>
-                    <ol className="list-decimal list-inside text-neutral-400 space-y-1">
+                    <ol className="list-decimal list-inside text-neutral-600 dark:text-neutral-400 space-y-1">
                       <li>Distribuição do brief para Arquiteto de Produto sênior.</li>
                       <li>Simulação computacional de gravação com o logotipo vetorizado.</li>
                       <li>Envio do portfólio físico virtual para aprovação (PDF).</li>
@@ -470,7 +470,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                 <div className="flex flex-col sm:flex-row gap-2 w-full max-w-lg pt-2 no-print">
                   <button
                     onClick={copyProposalToClipboard}
-                    className="flex-1 bg-black hover:bg-neutral-900 text-stone-100 py-3 px-3 rounded-xl text-[10px] font-sans font-medium uppercase tracking-wider border border-white/10 hover:border-gold/25 transition-all flex items-center justify-center gap-1.5"
+                    className="flex-1 bg-white dark:bg-black hover:bg-neutral-100 dark:bg-neutral-900 text-stone-100 py-3 px-3 rounded-xl text-[10px] font-sans font-medium uppercase tracking-wider border border-black/10 dark:border-white/10 hover:border-gold/25 transition-all flex items-center justify-center gap-1.5"
                   >
                     {copied ? (
                       <>
@@ -486,7 +486,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
 
                   <button
                     onClick={() => window.print()}
-                    className="flex-1 bg-neutral-900 hover:bg-neutral-800 text-stone-100 py-3 px-3 rounded-xl text-[10px] font-sans font-medium uppercase tracking-wider border border-white/10 hover:border-gold/25 transition-all flex items-center justify-center gap-1.5"
+                    className="flex-1 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:bg-neutral-800 text-stone-100 py-3 px-3 rounded-xl text-[10px] font-sans font-medium uppercase tracking-wider border border-black/10 dark:border-white/10 hover:border-gold/25 transition-all flex items-center justify-center gap-1.5"
                   >
                     <Printer size={11} /> Imprimir Protocolo
                   </button>

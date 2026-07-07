@@ -51,14 +51,14 @@ export const LaserSimulator: React.FC<LaserSimulatorProps> = ({ logoText, brandC
   };
 
   return (
-    <div className="bg-black/50 backdrop-blur-sm rounded-2xl border border-white/5 hover:border-gold/25 transition-colors overflow-hidden shadow-2xl relative">
+    <div className="bg-white/50 dark:bg-black/50 backdrop-blur-sm rounded-2xl border border-black/5 dark:border-white/5 hover:border-gold/25 transition-colors overflow-hidden shadow-2xl relative">
       {/* Absolute Tech Grid Background */}
       <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.08] pointer-events-none" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 items-center relative z-10">
         
         {/* Left Side: Visualizer Stage */}
-        <div className="lg:col-span-7 flex flex-col items-center justify-center bg-black/60 rounded-xl border border-white/5 p-6 min-h-[340px] relative overflow-hidden">
+        <div className="lg:col-span-7 flex flex-col items-center justify-center bg-white/60 dark:bg-black/60 rounded-xl border border-black/5 dark:border-white/5 p-6 min-h-[340px] relative overflow-hidden">
           
           {/* Laser Head & Beam Indicator */}
           {isEngraving && (
@@ -90,10 +90,10 @@ export const LaserSimulator: React.FC<LaserSimulatorProps> = ({ logoText, brandC
           )}
 
           {/* Glowing Target Crosshairs */}
-          <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-neutral-800 pointer-events-none" />
-          <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-neutral-800 pointer-events-none" />
-          <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-neutral-800 pointer-events-none" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-neutral-800 pointer-events-none" />
+          <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-neutral-200 dark:border-neutral-800 pointer-events-none" />
+          <div className="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-neutral-200 dark:border-neutral-800 pointer-events-none" />
+          <div className="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-neutral-200 dark:border-neutral-800 pointer-events-none" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-neutral-200 dark:border-neutral-800 pointer-events-none" />
 
           {/* Interactive Dynamic SVG Render of selected item */}
           <div className="relative w-64 h-64 flex items-center justify-center transition-all duration-500">
@@ -221,12 +221,12 @@ export const LaserSimulator: React.FC<LaserSimulatorProps> = ({ logoText, brandC
           </div>
 
           {/* Status Overlay */}
-          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs text-neutral-300 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/5">
+          <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs text-neutral-700 dark:text-neutral-300 bg-white/85 dark:bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-black/5 dark:border-white/5">
             <span className="flex items-center gap-1.5 font-mono">
               <Cpu size={12} className={isEngraving ? "text-gold animate-spin" : "text-neutral-500"} />
               {isEngraving ? "GRAVANDO METAL..." : hasFinished ? "GRAVAÇÃO REALIZADA" : "PRONTO PARA TESTE"}
             </span>
-            <span className="font-mono text-neutral-400">
+            <span className="font-mono text-neutral-600 dark:text-neutral-400">
               {isEngraving ? `${Math.round(engravedProgress)}%` : hasFinished ? "100%" : "0%"}
             </span>
           </div>
@@ -239,10 +239,10 @@ export const LaserSimulator: React.FC<LaserSimulatorProps> = ({ logoText, brandC
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider bg-gold/10 text-gold border border-gold/25 uppercase font-semibold">
               Tecnologia B2B
             </div>
-            <h3 className="text-xl font-sans font-semibold tracking-tight text-white">
+            <h3 className="text-xl font-sans font-semibold tracking-tight text-black dark:text-white">
               Simulador Fibra Óptica 
             </h3>
-            <p className="text-xs text-neutral-400 leading-relaxed">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
               Experimente a precisão cirúrgica de nossa gravação a laser rotativa de CO₂ e fibra. Digite o logotipo ao lado e dispare o feixe para sentir a háptica visual de carbonização ou decapagem metálica.
             </p>
           </div>
@@ -261,7 +261,7 @@ export const LaserSimulator: React.FC<LaserSimulatorProps> = ({ logoText, brandC
                   className={`text-[10px] font-medium py-2 px-1 text-center rounded-lg border transition-all truncate ${
                     selectedProductId === p.id
                       ? "bg-gold text-black border-gold shadow-md shadow-gold/10"
-                      : "bg-black/40 text-neutral-400 border-white/5 hover:text-white hover:border-white/20 disabled:opacity-40"
+                      : "bg-white/40 dark:bg-black/40 text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/5 hover:text-black dark:text-white hover:border-black/20 dark:border-white/20 disabled:opacity-40"
                   }`}
                 >
                   {p.name.split(" ").slice(0, 2).join(" ")}

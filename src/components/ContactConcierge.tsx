@@ -91,42 +91,42 @@ export function ContactConcierge() {
             <span className="text-[10px] font-mono tracking-[0.3em] text-gold uppercase block">
               CANAL DE ATENDIMENTO VIP
             </span>
-            <h3 className="text-2xl font-sans font-semibold text-white tracking-tight">
+            <h3 className="text-2xl font-sans font-semibold text-black dark:text-white tracking-tight">
               Concierge Desk OPUS
             </h3>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400">
               Entre em contato direto com nossos curadores corporativos ou agende uma videoconferência para alinhar as amostras físicas e manuais de marca do seu lote.
             </p>
           </div>
 
           {/* Core Contacts Card */}
-          <div className="bg-neutral-950 border border-white/5 rounded-2xl p-5 space-y-4 text-xs font-mono">
-            <div className="flex items-center gap-3 text-neutral-300">
+          <div className="bg-neutral-50 dark:bg-neutral-950 border border-black/5 dark:border-white/5 rounded-2xl p-5 space-y-4 text-xs font-mono">
+            <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
               <Mail className="text-gold" size={14} />
               <span>curadoria@opusateliere.com.br</span>
             </div>
-            <div className="flex items-center gap-3 text-neutral-300">
+            <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
               <Phone className="text-gold" size={14} />
               <span>+55 (11) 3089-4400 (WhatsApp VIP)</span>
             </div>
-            <div className="flex items-center gap-3 text-neutral-300">
+            <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
               <MapPin className="text-gold" size={14} />
-              <span className="leading-tight text-neutral-400">
+              <span className="leading-tight text-neutral-600 dark:text-neutral-400">
                 Av. Brigadeiro Faria Lima, 3477 - Itaim Bibi, São Paulo - SP
               </span>
             </div>
           </div>
 
           {/* Virtual Appointment Slot Scheduler */}
-          <div className="bg-neutral-950 border border-white/5 rounded-2xl p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-white/5 pb-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-neutral-300">
+          <div className="bg-neutral-50 dark:bg-neutral-950 border border-black/5 dark:border-white/5 rounded-2xl p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-black/5 dark:border-white/5 pb-2">
+              <div className="flex items-center gap-2 text-xs font-mono text-neutral-700 dark:text-neutral-300">
                 <Calendar className="text-gold" size={12} />
                 <span>Video-Call de Curadoria</span>
               </div>
               <span className="text-[9px] font-mono text-neutral-500 uppercase">30 MIN</span>
             </div>
-            <p className="text-[11px] text-neutral-400 leading-normal">
+            <p className="text-[11px] text-neutral-600 dark:text-neutral-400 leading-normal">
               Selecione um horário para receber uma demonstração privada das técnicas de gravação e debossing via Teams ou Google Meet:
             </p>
 
@@ -141,7 +141,7 @@ export function ContactConcierge() {
                     className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center justify-center ${
                       isSelected
                         ? "bg-gold text-black border-gold font-bold shadow-md shadow-gold/15"
-                        : "bg-black text-neutral-400 border-white/5 hover:text-white hover:border-white/10"
+                        : "bg-white dark:bg-black text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/5 hover:text-black dark:text-white hover:border-black/10 dark:border-white/10"
                     }`}
                   >
                     <span className="text-[9px] font-mono block leading-none">{slot.date}</span>
@@ -157,7 +157,7 @@ export function ContactConcierge() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-teal-500/10 border border-teal-500/20 text-teal-300 rounded-xl p-3 text-[10px] font-mono text-center"
               >
-                ✓ Reunião solicitada para: <strong className="text-white">{selectedMeetingTime}</strong>. Enviaremos o convite no e-mail corporativo cadastrado ao lado.
+                ✓ Reunião solicitada para: <strong className="text-black dark:text-white">{selectedMeetingTime}</strong>. Enviaremos o convite no e-mail corporativo cadastrado ao lado.
               </motion.div>
             )}
           </div>
@@ -165,7 +165,7 @@ export function ContactConcierge() {
 
         {/* Right Side: Intake Intake Form with Live Pricing Estimator Panel */}
         <div className="lg:col-span-7">
-          <div className="bg-neutral-950 border border-white/5 rounded-3xl p-6 md:p-8 space-y-8 shadow-2xl relative">
+          <div className="bg-neutral-50 dark:bg-neutral-950 border border-black/5 dark:border-white/5 rounded-3xl p-6 md:p-8 space-y-8 shadow-2xl relative">
             <div className="absolute top-0 right-0 w-80 h-80 bg-gold/5 rounded-full blur-[90px] pointer-events-none" />
 
             {isSuccess ? (
@@ -178,10 +178,10 @@ export function ContactConcierge() {
                   <CheckCircle size={32} />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-lg font-sans font-semibold text-white">
+                  <h4 className="text-lg font-sans font-semibold text-black dark:text-white">
                     Solicitação de Atendimento Registrada!
                   </h4>
-                  <p className="text-xs text-neutral-400 max-w-sm mx-auto leading-relaxed">
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 max-w-sm mx-auto leading-relaxed">
                     Seu dossiê prévio de orçamento foi catalogado sob o código provisório <strong className="text-gold">#OP-{Math.floor(Math.random() * 90000 + 10000)}</strong>. Um curador especializado entrará em contato nas próximas 2 horas comerciais.
                   </p>
                 </div>
@@ -192,16 +192,16 @@ export function ContactConcierge() {
                 )}
                 <button
                   onClick={() => setIsSuccess(false)}
-                  className="bg-neutral-900 hover:bg-neutral-800 text-stone-200 font-sans text-xs font-medium px-6 py-2.5 rounded-xl border border-white/5 transition-all"
+                  className="bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:bg-neutral-800 text-stone-200 font-sans text-xs font-medium px-6 py-2.5 rounded-xl border border-black/5 dark:border-white/5 transition-all"
                 >
                   Fazer nova simulação de lote
                 </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="flex items-center gap-2 border-b border-white/5 pb-4">
+                <div className="flex items-center gap-2 border-b border-black/5 dark:border-white/5 pb-4">
                   <Calculator size={16} className="text-gold" />
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-neutral-300">
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-neutral-700 dark:text-neutral-300">
                     Calculadora de Orçamento Técnico & Projeto
                   </h4>
                 </div>
@@ -209,13 +209,13 @@ export function ContactConcierge() {
                 {/* Form Group 1: Gift Details & Package Types */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[9px] font-mono text-neutral-400 uppercase tracking-wider block">
+                    <label className="text-[9px] font-mono text-neutral-600 dark:text-neutral-400 uppercase tracking-wider block">
                       Linha de Brinde Base:
                     </label>
                     <select
                       value={formData.giftType}
                       onChange={(e) => setFormData({ ...formData, giftType: e.target.value })}
-                      className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold rounded-xl p-2 text-xs text-neutral-300 focus:outline-none"
+                      className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl p-2 text-xs text-neutral-700 dark:text-neutral-300 focus:outline-none"
                     >
                       <option value="onboarding">Welcome Kits Executivos</option>
                       <option value="executivo">Linha de Escrita & Cadernos</option>
@@ -225,13 +225,13 @@ export function ContactConcierge() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[9px] font-mono text-neutral-400 uppercase tracking-wider block">
+                    <label className="text-[9px] font-mono text-neutral-600 dark:text-neutral-400 uppercase tracking-wider block">
                       Estojo / Embalagem:
                     </label>
                     <select
                       value={formData.boxType}
                       onChange={(e) => setFormData({ ...formData, boxType: e.target.value })}
-                      className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold rounded-xl p-2 text-xs text-neutral-300 focus:outline-none"
+                      className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl p-2 text-xs text-neutral-700 dark:text-neutral-300 focus:outline-none"
                     >
                       <option value="kraft">Estojo Kraft Fine-Art (+R$12,00)</option>
                       <option value="luxury">Estojo Rígido Luxo (+R$45,00)</option>
@@ -241,13 +241,13 @@ export function ContactConcierge() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[9px] font-mono text-neutral-400 uppercase tracking-wider block">
+                    <label className="text-[9px] font-mono text-neutral-600 dark:text-neutral-400 uppercase tracking-wider block">
                       Quantidade Estimada:
                     </label>
                     <select
                       value={formData.bracket}
                       onChange={(e) => setFormData({ ...formData, bracket: e.target.value })}
-                      className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold rounded-xl p-2 text-xs text-neutral-300 focus:outline-none"
+                      className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl p-2 text-xs text-neutral-700 dark:text-neutral-300 focus:outline-none"
                     >
                       <option value="20">20 unidades (Lote Mínimo)</option>
                       <option value="50">50 unidades (Desconto 3%)</option>
@@ -260,8 +260,8 @@ export function ContactConcierge() {
                 </div>
 
                 {/* Simulated Live Budget Board */}
-                <div className="bg-neutral-900/60 border border-white/5 rounded-2xl p-5 space-y-4 font-mono text-xs text-neutral-400">
-                  <div className="flex justify-between items-center text-neutral-300 font-semibold border-b border-white/5 pb-2">
+                <div className="bg-neutral-100/60 dark:bg-neutral-900/60 border border-black/5 dark:border-white/5 rounded-2xl p-5 space-y-4 font-mono text-xs text-neutral-600 dark:text-neutral-400">
+                  <div className="flex justify-between items-center text-neutral-700 dark:text-neutral-300 font-semibold border-b border-black/5 dark:border-white/5 pb-2">
                     <span className="flex items-center gap-1"><FileText size={12} className="text-gold" /> Estudo Prévio Estimado</span>
                     <span className="text-[10px] text-neutral-500">LOTE #{formData.bracket}UN</span>
                   </div>
@@ -269,17 +269,17 @@ export function ContactConcierge() {
                   <div className="space-y-1.5 leading-relaxed text-[11px]">
                     <div className="flex justify-between">
                       <span>Valor Unitário Médio (Item + Embalagem):</span>
-                      <span className="text-white">R$ {quote.unitPrice.toFixed(2)}</span>
+                      <span className="text-black dark:text-white">R$ {quote.unitPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Custo de Setup Técnico Industrial (Fixo):</span>
-                      <span className="text-white">R$ {quote.setupFee.toFixed(2)}</span>
+                      <span className="text-black dark:text-white">R$ {quote.setupFee.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Frete Técnico Segurado (Simulação SP):</span>
-                      <span className="text-white">R$ {quote.freight.toFixed(2)}</span>
+                      <span className="text-black dark:text-white">R$ {quote.freight.toFixed(2)}</span>
                     </div>
-                    <div className="flex justify-between border-t border-white/5 pt-2 text-white font-bold text-sm">
+                    <div className="flex justify-between border-t border-black/5 dark:border-white/5 pt-2 text-black dark:text-white font-bold text-sm">
                       <span>VALOR TOTAL DO LOTE:</span>
                       <span className="text-gold border-b border-gold">R$ {quote.total.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
@@ -288,7 +288,7 @@ export function ContactConcierge() {
 
                 {/* Form Group 2: Corporate Client Data */}
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 border-t border-white/5 pt-4">
+                  <div className="flex items-center gap-2 text-xs font-mono text-neutral-600 dark:text-neutral-400 border-t border-black/5 dark:border-white/5 pt-4">
                     <Building2 size={13} className="text-gold" />
                     <span>Dados Cadastrais da Empresa</span>
                   </div>
@@ -301,7 +301,7 @@ export function ContactConcierge() {
                         placeholder="Nome do Solicitante / Cargo"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-neutral-900/70 border border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-white focus:outline-none placeholder:text-neutral-600"
+                        className="w-full bg-neutral-100/70 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-black dark:text-white focus:outline-none placeholder:text-neutral-600"
                       />
                     </div>
 
@@ -312,7 +312,7 @@ export function ContactConcierge() {
                         placeholder="E-mail Corporativo"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-neutral-900/70 border border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-white focus:outline-none placeholder:text-neutral-600"
+                        className="w-full bg-neutral-100/70 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-black dark:text-white focus:outline-none placeholder:text-neutral-600"
                       />
                     </div>
 
@@ -323,7 +323,7 @@ export function ContactConcierge() {
                         placeholder="WhatsApp para Contato"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-neutral-900/70 border border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-white focus:outline-none placeholder:text-neutral-600"
+                        className="w-full bg-neutral-100/70 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-black dark:text-white focus:outline-none placeholder:text-neutral-600"
                       />
                     </div>
 
@@ -334,7 +334,7 @@ export function ContactConcierge() {
                         placeholder="Nome da Empresa / CNPJ"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full bg-neutral-900/70 border border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-white focus:outline-none placeholder:text-neutral-600"
+                        className="w-full bg-neutral-100/70 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-black dark:text-white focus:outline-none placeholder:text-neutral-600"
                       />
                     </div>
                   </div>
@@ -345,12 +345,12 @@ export function ContactConcierge() {
                       placeholder="Descreva detalhes específicos do seu projeto (ex: prazo máximo de entrega, necessidade de prova física em couro, etc.)"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-neutral-900/70 border border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-white focus:outline-none placeholder:text-neutral-600"
+                      className="w-full bg-neutral-100/70 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 focus:border-gold rounded-xl py-2 px-3 text-xs text-black dark:text-white focus:outline-none placeholder:text-neutral-600"
                     />
                   </div>
 
                   {/* Delivery Urgency Toggles */}
-                  <div className="flex items-center gap-4 text-[10px] font-mono text-neutral-400">
+                  <div className="flex items-center gap-4 text-[10px] font-mono text-neutral-600 dark:text-neutral-400">
                     <span>Urgência de Entrega:</span>
                     <label className="flex items-center gap-1.5 cursor-pointer">
                       <input

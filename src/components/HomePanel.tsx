@@ -32,7 +32,7 @@ export function HomePanel({
   return (
     <div className="space-y-16 py-6">
       {/* Immersive Welcome Hero */}
-      <section className="relative rounded-3xl border border-white/5 overflow-hidden bg-[#030303]">
+      <section className="relative rounded-3xl border border-black/5 dark:border-white/5 overflow-hidden bg-[#030303]">
         {/* Subtle dynamic background glow in sync with brand color */}
         <div 
           className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full blur-[120px] opacity-15 pointer-events-none transition-all duration-1000"
@@ -47,13 +47,13 @@ export function HomePanel({
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-semibold tracking-tight text-white leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-sans font-semibold tracking-tight text-black dark:text-white leading-[1.1]">
               A Reinvenção do Brinde.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark">
                 Bem-vindo à Era Opus.
               </span>
             </h1>
-            <p className="max-w-2xl mx-auto text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+            <p className="max-w-2xl mx-auto text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-light leading-relaxed">
               Não oferecemos produtos genéricos. Desenvolvemos o showroom interativo de alta precisão técnica onde a identidade institucional de sua marca é simulada em tempo real sobre matérias-primas nobres.
             </p>
           </div>
@@ -69,14 +69,14 @@ export function HomePanel({
             </button>
             <button
               onClick={onOpenCuration}
-              className="w-full sm:w-auto bg-transparent hover:bg-white/5 text-white font-sans font-medium text-xs uppercase tracking-wider py-3.5 px-6 rounded-xl border border-white/10 hover:border-gold/30 transition-colors flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-transparent hover:bg-white/5 text-black dark:text-white font-sans font-medium text-xs uppercase tracking-wider py-3.5 px-6 rounded-xl border border-black/10 dark:border-white/10 hover:border-gold/30 transition-colors flex items-center justify-center gap-2"
             >
               <span>Solicitar Briefing VIP</span>
             </button>
           </div>
 
           {/* Quality Trust Badges */}
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 pt-8 border-t border-white/5 text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
+          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 pt-8 border-t border-black/5 dark:border-white/5 text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
             <div className="flex items-center gap-1.5">
               <Building2 size={11} className="text-gold" />
               <span>Direcionado a CNPJs & Compras VIP</span>
@@ -95,24 +95,24 @@ export function HomePanel({
 
       {/* Interactive Brand Personalization Gateway (The Smart Tool Setup card) */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        <div className="lg:col-span-5 bg-[#070707]/90 border border-white/5 rounded-2xl p-6 flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-5 bg-[#070707]/90 border border-black/5 dark:border-white/5 rounded-2xl p-6 flex flex-col justify-between space-y-6">
           <div className="space-y-2">
             <div className="flex items-center gap-1.5 text-gold text-[10px] font-mono uppercase tracking-wider">
               <Paintbrush size={12} />
               <span>Ativação Instantânea de Marca</span>
             </div>
-            <h2 className="text-lg font-sans font-medium text-white tracking-tight">
+            <h2 className="text-lg font-sans font-medium text-black dark:text-white tracking-tight">
               A Inovadora Engenharia "Color Hack"
             </h2>
-            <p className="text-xs text-neutral-400 leading-relaxed font-light">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-light">
               Insira os dados visuais de sua empresa abaixo. Nosso algoritmo matemático de overlay aplica a assinatura cromática e o logotipo em tempo real por todo o catálogo de produtos e no estúdio WebGL.
             </p>
           </div>
 
           {/* Quick Config Inputs inside the welcome card */}
-          <div className="space-y-4 bg-neutral-950/80 p-5 rounded-xl border border-white/5 shadow-2xl">
+          <div className="space-y-4 bg-neutral-50/80 dark:bg-neutral-950/80 p-5 rounded-xl border border-black/5 dark:border-white/5 shadow-2xl">
             <div className="space-y-2">
-              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-400 block">
+              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 block">
                 1. Nome da Empresa (Texto)
               </label>
               <input
@@ -120,12 +120,12 @@ export function HomePanel({
                 value={logoText}
                 onChange={(e) => setLogoText(e.target.value)}
                 placeholder="Ex: OPUS STUDIO"
-                className="w-full bg-[#09090b] border border-white/10 focus:border-gold/50 rounded-lg px-4 py-2.5 text-xs text-white placeholder-neutral-600 focus:outline-none transition-all"
+                className="w-full bg-[#09090b] border border-black/10 dark:border-white/10 focus:border-gold/50 rounded-lg px-4 py-2.5 text-xs text-black dark:text-white placeholder-neutral-600 focus:outline-none transition-all"
               />
             </div>
             
             <div className="space-y-2">
-              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-400 block">
+              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 block">
                 2. Tipografia Institucional
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -137,7 +137,7 @@ export function HomePanel({
                   <button
                     key={font.id}
                     onClick={() => setBrandFont(font.id)}
-                    className={`py-2 text-[10px] uppercase rounded-lg border transition-all ${brandFont === font.id ? "bg-white text-black border-white font-bold" : "bg-[#09090b] text-neutral-400 border-white/10 hover:border-white/30"}`}
+                    className={`py-2 text-[10px] uppercase rounded-lg border transition-all ${brandFont === font.id ? "bg-white text-black border-black dark:border-white font-bold" : "bg-[#09090b] text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10 hover:border-black/30 dark:border-white/30"}`}
                   >
                     <span className={font.cls}>{font.label}</span>
                   </button>
@@ -146,7 +146,7 @@ export function HomePanel({
             </div>
 
             <div className="space-y-2">
-              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-400 block flex items-center justify-between">
+              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 block flex items-center justify-between">
                 <span>3. Cor de Assinatura</span>
                 <span className="text-gold font-mono">{brandColor.toUpperCase()}</span>
               </label>
@@ -157,7 +157,7 @@ export function HomePanel({
                   <button
                     key={preset}
                     onClick={() => setBrandColor(preset)}
-                    className={`w-7 h-7 rounded-full border-2 transition-transform hover:scale-110 ${brandColor.toLowerCase() === preset.toLowerCase() ? "border-white scale-110" : "border-transparent"}`}
+                    className={`w-7 h-7 rounded-full border-2 transition-transform hover:scale-110 ${brandColor.toLowerCase() === preset.toLowerCase() ? "border-black dark:border-white scale-110" : "border-transparent"}`}
                     style={{ backgroundColor: preset }}
                   />
                 ))}
@@ -166,32 +166,32 @@ export function HomePanel({
                   type="color"
                   value={brandColor}
                   onChange={(e) => setBrandColor(e.target.value)}
-                  className="w-7 h-7 rounded border border-white/20 bg-transparent cursor-pointer p-0"
+                  className="w-7 h-7 rounded border border-black/20 dark:border-white/20 bg-transparent cursor-pointer p-0"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+            <div className="grid grid-cols-2 gap-4 pt-2 border-t border-black/5 dark:border-white/5">
               <div className="space-y-2">
-                <label className="text-[8px] font-mono uppercase tracking-[0.2em] text-neutral-400 block flex justify-between">
+                <label className="text-[8px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 block flex justify-between">
                   <span>Escala</span>
-                  <span className="text-white">{(logoScale * 100).toFixed(0)}%</span>
+                  <span className="text-black dark:text-white">{(logoScale * 100).toFixed(0)}%</span>
                 </label>
                 <input 
                   type="range" min="0.5" max="2" step="0.1" 
                   value={logoScale} onChange={(e) => setLogoScale(parseFloat(e.target.value))}
-                  className="w-full accent-gold h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-gold h-1 bg-neutral-200 dark:bg-neutral-800 rounded-lg appearance-none cursor-pointer"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[8px] font-mono uppercase tracking-[0.2em] text-neutral-400 block flex justify-between">
+                <label className="text-[8px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 block flex justify-between">
                   <span>Posição (Y)</span>
-                  <span className="text-white">{logoY > 0 ? `+${logoY}` : logoY}px</span>
+                  <span className="text-black dark:text-white">{logoY > 0 ? `+${logoY}` : logoY}px</span>
                 </label>
                 <input 
                   type="range" min="-80" max="80" step="5" 
                   value={logoY} onChange={(e) => setLogoY(parseInt(e.target.value))}
-                  className="w-full accent-gold h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer"
+                  className="w-full accent-gold h-1 bg-neutral-200 dark:bg-neutral-800 rounded-lg appearance-none cursor-pointer"
                 />
               </div>
             </div>
@@ -204,10 +204,10 @@ export function HomePanel({
         </div>
 
         {/* Dynamic preview block */}
-        <div className="lg:col-span-7 bg-[#050505] border border-white/5 rounded-2xl p-6 flex flex-col space-y-6 overflow-hidden relative">
+        <div className="lg:col-span-7 bg-[#050505] border border-black/5 dark:border-white/5 rounded-2xl p-6 flex flex-col space-y-6 overflow-hidden relative">
           
-          <div className="flex justify-between items-center border-b border-white/5 pb-4 z-10 relative">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">
+          <div className="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-4 z-10 relative">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
               Galeria de Aplicações Reais
             </span>
             <span className="text-[9px] font-mono text-gold bg-gold/10 px-2 py-0.5 rounded uppercase font-semibold border border-gold/20 shadow-[0_0_10px_rgba(212,175,55,0.2)]">
@@ -221,7 +221,7 @@ export function HomePanel({
             {/* Real Image Preview 1: Thermal Bottle (Laser Engraving) */}
             <div 
               onClick={onNavigateToProducts}
-              className="group relative rounded-xl overflow-hidden border border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
+              className="group relative rounded-xl overflow-hidden border border-black/10 dark:border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
             >
               <img src="/assets/images/garrafa_hero.jpg" alt="Garrafa Térmica" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -253,7 +253,7 @@ export function HomePanel({
               </div>
 
               <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                <span className="text-[8px] font-mono text-white/70 uppercase tracking-wider">Gravação Laser<br/><strong className="text-white">Garrafa LED</strong></span>
+                <span className="text-[8px] font-mono text-black/70 dark:text-white/70 uppercase tracking-wider">Gravação Laser<br/><strong className="text-black dark:text-white">Garrafa LED</strong></span>
                 <span className="text-[9px] font-mono text-gold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Ver Produto <ArrowRight size={10} /></span>
               </div>
             </div>
@@ -261,7 +261,7 @@ export function HomePanel({
             {/* Real Image Preview 2: Notebook (Debossing) */}
             <div 
               onClick={onNavigateToProducts}
-              className="group relative rounded-xl overflow-hidden border border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
+              className="group relative rounded-xl overflow-hidden border border-black/10 dark:border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
             >
               <img src="/assets/images/moleskine_hero.jpg" alt="Caderno Moleskine" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -287,7 +287,7 @@ export function HomePanel({
               </div>
 
               <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                <span className="text-[8px] font-mono text-white/70 uppercase tracking-wider">Debossing<br/><strong className="text-white">Moleskine Premium</strong></span>
+                <span className="text-[8px] font-mono text-black/70 dark:text-white/70 uppercase tracking-wider">Debossing<br/><strong className="text-black dark:text-white">Moleskine Premium</strong></span>
                 <span className="text-[9px] font-mono text-gold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Ver Produto <ArrowRight size={10} /></span>
               </div>
             </div>
@@ -302,13 +302,13 @@ export function HomePanel({
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-gold block">
             Os Pilares da Excelência
           </span>
-          <h2 className="text-xl font-sans font-semibold text-white tracking-tight">
+          <h2 className="text-xl font-sans font-semibold text-black dark:text-white tracking-tight">
             Tecnologia de Vanguarda e Curadoria Exclusiva
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 bg-[#070707]/70 border border-white/5 rounded-xl space-y-3 hover:border-white/10 transition-colors">
+          <div className="p-6 bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
             <div className="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold">
               <Cpu size={14} />
             </div>
@@ -320,7 +320,7 @@ export function HomePanel({
             </p>
           </div>
 
-          <div className="p-6 bg-[#070707]/70 border border-white/5 rounded-xl space-y-3 hover:border-white/10 transition-colors">
+          <div className="p-6 bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
             <div className="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold">
               <Layers size={14} />
             </div>
@@ -332,7 +332,7 @@ export function HomePanel({
             </p>
           </div>
 
-          <div className="p-6 bg-[#070707]/70 border border-white/5 rounded-xl space-y-3 hover:border-white/10 transition-colors">
+          <div className="p-6 bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
             <div className="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold">
               <ShieldCheck size={14} />
             </div>

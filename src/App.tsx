@@ -30,12 +30,27 @@ import {
   Flame,
   Home,
   Upload,
-  Image as ImageIcon
+  ImageIcon,
+  Moon,
+  Sun
 } from "lucide-react";
 
 export default function App() {
   // Navigation tabs state
   const [activeTab, setActiveTab] = useState<"home" | "produtos" | "quemsomos" | "servicos" | "contato">("home");
+
+  const [isDark, setIsDark] = useState(() => {
+    return document.documentElement.classList.contains('dark');
+  });
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  };
 
   // Global States for interactive personalization syncing
   const [brandColor, setBrandColor] = useState<string>("#3b82f6");
@@ -81,22 +96,22 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-neutral-200 font-sans antialiased selection:bg-white selection:text-black pb-12">
+    <div className="min-h-screen bg-white text-black dark:bg-[#050505] dark:text-neutral-200 font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black pb-12 transition-colors duration-300">
       
       {/* 1. TOP PREMIUM SYNCHRONIZATION BAR */}
-      <div className="sticky top-0 z-30 bg-black/85 backdrop-blur-md border-b border-white/10 px-6 py-4">
+      <div className="sticky top-0 z-30 bg-white/85 dark:bg-black/85 backdrop-blur-md border-b border-black/10 dark:border-white/10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           
           {/* Logo / B2B Branding Identity */}
           <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-            <span className="font-sans font-bold text-sm text-white tracking-[0.3em] uppercase">
-              OPUS <span className="text-[10px] font-light text-neutral-400 tracking-normal">| Studio</span>
+            <span className="font-sans font-bold text-sm text-black dark:text-white tracking-[0.3em] uppercase">
+              OPUS <span className="text-[10px] font-light text-neutral-600 dark:text-neutral-400 tracking-normal">| Studio</span>
             </span>
           </div>
 
           {/* Interactive B2B Personalization Bar - The Psychological "Hack" */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto bg-black/90 p-2.5 rounded-2xl border border-white/10 shadow-lg shadow-gold/5">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto bg-white/90 dark:bg-black/90 p-2.5 rounded-2xl border border-black/10 dark:border-white/10 shadow-lg shadow-gold/5">
             {/* Logo Text Input & Upload */}
             <div className="relative w-full sm:w-64 flex items-center gap-1">
               <div className="relative flex-1">
@@ -111,12 +126,12 @@ export default function App() {
                     setLogoText(e.target.value);
                     setLogoType("text");
                   }}
-                  className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-xl py-1.5 pl-12 pr-3 text-[11px] text-white font-mono uppercase tracking-wider"
+                  className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-xl py-1.5 pl-12 pr-3 text-[11px] text-black dark:text-white font-mono uppercase tracking-wider"
                   placeholder="DIGITE SUA MARCA"
                 />
               </div>
               
-              <label className="flex-shrink-0 cursor-pointer bg-neutral-900 border border-neutral-800 hover:border-gold hover:text-gold text-neutral-400 p-2 rounded-xl transition-colors" title="Fazer upload do seu Logo (PNG transparente)">
+              <label className="flex-shrink-0 cursor-pointer bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-gold hover:text-gold text-neutral-600 dark:text-neutral-400 p-2 rounded-xl transition-colors" title="Fazer upload do seu Logo (PNG transparente)">
                 <input type="file" accept="image/png, image/svg+xml" className="hidden" onChange={handleLogoUpload} />
                 <Upload size={14} />
               </label>
@@ -133,7 +148,7 @@ export default function App() {
             </div>
 
             {/* HEX Color Picker */}
-            <div className="flex items-center gap-2 w-full sm:w-auto bg-neutral-900/60 border border-neutral-800/60 rounded-xl px-3 py-1.5">
+            <div className="flex items-center gap-2 w-full sm:w-auto bg-neutral-100/60 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl px-3 py-1.5">
               <Palette size={12} className="text-neutral-500" />
               <span className="text-[9px] font-mono text-neutral-500 uppercase">HEX da Empresa:</span>
               <div className="flex items-center gap-1.5 ml-1">
@@ -146,10 +161,19 @@ export default function App() {
                   maxLength={7}
                   value={brandColor}
                   onChange={(e) => setBrandColor(e.target.value.startsWith("#") ? e.target.value : `#${e.target.value}`)}
-                  className="bg-transparent text-white font-mono text-[11px] focus:outline-none w-14 uppercase"
+                  className="bg-transparent text-black dark:text-white font-mono text-[11px] focus:outline-none w-14 uppercase"
                 />
               </div>
             </div>
+
+            {/* Theme Toggle */}
+            <button 
+              onClick={toggleTheme}
+              className="flex items-center justify-center w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-gold hover:border-gold transition-colors"
+              title="Mudar Tema"
+            >
+              {isDark ? <Sun size={14} /> : <Moon size={14} />}
+            </button>
 
             {/* Micro Indicator */}
             <div className="hidden lg:flex items-center gap-1 text-[9px] text-neutral-500 font-mono pl-1 uppercase">
@@ -170,7 +194,7 @@ export default function App() {
       </div>
 
       {/* 1.5 SUB-NAVIGATION TAB STRIP */}
-      <div className="sticky top-[73px] md:top-[81px] z-20 bg-[#070707]/95 backdrop-blur-md border-b border-white/5 py-3 px-6 shadow-xl no-print">
+      <div className="sticky top-[73px] md:top-[81px] z-20 bg-[#070707]/95 backdrop-blur-md border-b border-black/5 dark:border-white/5 py-3 px-6 shadow-xl no-print">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex flex-wrap justify-center sm:justify-start gap-1">
             {[
@@ -190,13 +214,13 @@ export default function App() {
                   }}
                   className={`text-[9.5px] font-mono uppercase tracking-wider px-3.5 py-1.5 rounded-xl transition-all border flex items-center gap-1.5 ${
                     isActive
-                      ? "bg-white text-black border-white font-bold"
-                      : "bg-transparent text-neutral-400 border-transparent hover:text-white hover:bg-neutral-900/60"
+                      ? "bg-white text-black border-black dark:border-white font-bold"
+                      : "bg-transparent text-neutral-600 dark:text-neutral-400 border-transparent hover:text-black dark:text-white hover:bg-neutral-100/60 dark:bg-neutral-900/60"
                   }`}
                 >
                   <span>{tab.label}</span>
                   {tab.count !== null && (
-                    <span className={`text-[8px] px-1 rounded font-semibold ${isActive ? "bg-black/15 text-black" : "bg-neutral-900 text-neutral-500"}`}>
+                    <span className={`text-[8px] px-1 rounded font-semibold ${isActive ? "bg-white/15 dark:bg-black/15 text-black" : "bg-neutral-100 dark:bg-neutral-900 text-neutral-500"}`}>
                       {tab.count}
                     </span>
                   )}
@@ -215,7 +239,7 @@ export default function App() {
       {activeTab === "produtos" && (
         <>
           {/* 2. CORE CONTAINER HERO: IMMERSIVE STAGE */}
-          <section className="px-6 py-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-neutral-900">
+          <section className="px-6 py-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-neutral-100 dark:border-neutral-900">
         
         {/* Left: Elevating Editorial Pitch */}
         <div className="lg:col-span-5 space-y-6">
@@ -223,10 +247,10 @@ export default function App() {
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-mono tracking-[0.2em] bg-gold/10 text-gold border border-gold/25 uppercase font-semibold">
               Galeria de Alta Conversão B2B
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-semibold tracking-tight text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-semibold tracking-tight text-black dark:text-white leading-tight">
               A Materialização de Sua <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark">Cultura Organizacional</span>
             </h1>
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-light">
+            <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed font-light">
               Não listamos commodities corporativas. Desenvolvemos o canvas de prestígio no qual a identidade e a honra de sua marca serão seladas sobre matérias-primas nobres. Explore as técnicas e personalize em tempo real.
             </p>
           </div>
@@ -237,7 +261,7 @@ export default function App() {
                 const element = document.getElementById("gallery-anchor");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-neutral-950 hover:bg-neutral-900 text-stone-100 py-3 px-5 rounded-xl text-xs font-sans font-medium uppercase tracking-wider border border-white/10 hover:border-gold/45 transition-colors flex items-center justify-center gap-1"
+              className="bg-neutral-50 dark:bg-neutral-950 hover:bg-neutral-100 dark:bg-neutral-900 text-stone-100 py-3 px-5 rounded-xl text-xs font-sans font-medium uppercase tracking-wider border border-black/10 dark:border-white/10 hover:border-gold/45 transition-colors flex items-center justify-center gap-1"
             >
               Explorar Mostruário Completo <ChevronRight size={14} />
             </button>
@@ -259,15 +283,15 @@ export default function App() {
       <section id="gallery-anchor" className="px-6 py-16 max-w-7xl mx-auto space-y-10">
         
         {/* Filters and Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/5 pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/5 dark:border-white/5 pb-6">
           <div className="space-y-1.5">
             <span className="text-[10px] font-mono tracking-[0.3em] text-gold uppercase block">
               Curadoria de Arte Corporativa
             </span>
-            <h2 className="text-2xl font-sans font-semibold text-white tracking-tight">
+            <h2 className="text-2xl font-sans font-semibold text-black dark:text-white tracking-tight">
               O Mostruário de Alto Padrão
             </h2>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400">
               Passe o cursor sobre os artefatos para ver seu logotipo e cores aplicados de forma instantânea.
             </p>
           </div>
@@ -281,11 +305,11 @@ export default function App() {
                 className={`text-[10px] py-2 px-3.5 rounded-xl border font-sans font-medium transition-all flex items-center gap-1.5 ${
                   selectedCategory === cat.id
                     ? "bg-gold text-black border-gold shadow-lg shadow-gold/15"
-                    : "bg-black/40 text-neutral-400 border-white/5 hover:text-white hover:border-white/20"
+                    : "bg-white/40 dark:bg-black/40 text-neutral-600 dark:text-neutral-400 border-black/5 dark:border-white/5 hover:text-black dark:text-white hover:border-black/20 dark:border-white/20"
                 }`}
               >
                 <span>{cat.name}</span>
-                <span className={`text-[8px] font-mono px-1 rounded ${selectedCategory === cat.id ? "bg-black/15 text-black font-semibold" : "bg-neutral-900 text-neutral-500"}`}>
+                <span className={`text-[8px] font-mono px-1 rounded ${selectedCategory === cat.id ? "bg-white/15 dark:bg-black/15 text-black font-semibold" : "bg-neutral-100 dark:bg-neutral-900 text-neutral-500"}`}>
                   {cat.count}
                 </span>
               </button>
@@ -312,7 +336,7 @@ export default function App() {
                   onMouseEnter={() => setHoveredProductId(product.id)}
                   onMouseLeave={() => setHoveredProductId(null)}
                   onClick={() => setActiveProduct(product)}
-                  className={`break-inside-avoid w-full bg-[#0a0a0a]/80 backdrop-blur-sm rounded-2xl border border-white/5 hover:border-gold/35 p-5 flex flex-col justify-between transition-all duration-300 relative group cursor-pointer overflow-hidden ${heightClass}`}
+                  className={`break-inside-avoid w-full bg-[#0a0a0a]/80 backdrop-blur-sm rounded-2xl border border-black/5 dark:border-white/5 hover:border-gold/35 p-5 flex flex-col justify-between transition-all duration-300 relative group cursor-pointer overflow-hidden ${heightClass}`}
                 >
                   
                   {/* Subtle hover backlight */}
@@ -320,7 +344,7 @@ export default function App() {
 
                   {/* Top indicators */}
                   <div className="flex justify-between items-center z-10 relative">
-                    <span className="text-[9px] font-mono bg-black text-neutral-400 px-2.5 py-0.5 rounded-md border border-white/5 uppercase tracking-wider">
+                    <span className="text-[9px] font-mono bg-white dark:bg-black text-neutral-600 dark:text-neutral-400 px-2.5 py-0.5 rounded-md border border-black/5 dark:border-white/5 uppercase tracking-wider">
                       {product.category}
                     </span>
                     <span className="text-[9px] font-mono text-gold/80 font-medium">
@@ -344,7 +368,7 @@ export default function App() {
 
                     {/* Explode icon helper indicator if product is a kit */}
                     {product.isKit && (
-                      <div className="absolute bottom-2 right-2 bg-neutral-900/60 p-1.5 rounded-full border border-neutral-800 text-neutral-400 opacity-60 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute bottom-2 right-2 bg-neutral-100/60 dark:bg-neutral-900/60 p-1.5 rounded-full border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 opacity-60 group-hover:opacity-100 transition-opacity">
                         <Layers size={10} title="Este item é um Kit" />
                       </div>
                     )}
@@ -353,7 +377,7 @@ export default function App() {
                   {/* Product Copy Details */}
                   <div className="space-y-2 z-10 relative">
                     <div className="flex justify-between items-start gap-2">
-                      <h3 className="font-sans font-medium text-[13px] text-white tracking-tight group-hover:text-white transition-colors">
+                      <h3 className="font-sans font-medium text-[13px] text-black dark:text-white tracking-tight group-hover:text-black dark:text-white transition-colors">
                         {product.name}
                       </h3>
                       <ArrowUpRight size={14} className="text-neutral-600 group-hover:text-gold transition-colors" />
@@ -363,7 +387,7 @@ export default function App() {
                     </p>
                     
                     {/* Footing detail swatches summary */}
-                    <div className="flex items-center justify-between pt-2 border-t border-neutral-900">
+                    <div className="flex items-center justify-between pt-2 border-t border-neutral-100 dark:border-neutral-900">
                       <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider block">
                         {product.material.split(" ")[0]}
                       </span>
@@ -371,7 +395,7 @@ export default function App() {
                         {product.colors.map(col => (
                           <span 
                             key={col} 
-                            className="w-2.5 h-2.5 rounded-full border border-neutral-900" 
+                            className="w-2.5 h-2.5 rounded-full border border-neutral-100 dark:border-neutral-900" 
                             style={{ backgroundColor: col }}
                           />
                         ))}
@@ -388,7 +412,7 @@ export default function App() {
       </section>
 
       {/* 4. EXECUTIVE SERVICES / B2B BRAND MANIFESTO */}
-      <section className="px-6 py-16 bg-black/60 border-t border-b border-white/5">
+      <section className="px-6 py-16 bg-white/60 dark:bg-black/60 border-t border-b border-black/5 dark:border-white/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           <div className="space-y-2.5 group">
             <div className="w-8 h-8 rounded-full bg-gold/10 border border-gold/25 flex items-center justify-center text-gold shadow-sm shadow-gold/5">
@@ -532,7 +556,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* FOOTER */}
-      <footer className="mt-16 border-t border-white/5 pt-8 px-6 text-center text-neutral-600">
+      <footer className="mt-16 border-t border-black/5 dark:border-white/5 pt-8 px-6 text-center text-neutral-600">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono uppercase tracking-wider">
           <div>
             © 2026 OPUS PROMOÇÃO E CURADORIA S.A. TODOS OS DIREITOS RESERVADOS.

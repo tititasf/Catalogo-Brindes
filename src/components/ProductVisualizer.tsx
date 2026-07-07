@@ -432,7 +432,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
     };
 
     return (
-      <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 bg-[#070707] flex items-center justify-center shadow-inner group">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-[#070707] flex items-center justify-center shadow-inner group">
         
         {/* Real Product Image from Unsplash or high-fidelity placeholder fallback */}
         {!imageError ? (
@@ -444,7 +444,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
             referrerPolicy="no-referrer"
           />
         ) : (
-          <div className="absolute inset-0 bg-[#0c0c0e] flex flex-col items-center justify-between p-6 border border-white/5 rounded-2xl w-full h-full">
+          <div className="absolute inset-0 bg-[#0c0c0e] flex flex-col items-center justify-between p-6 border border-black/5 dark:border-white/5 rounded-2xl w-full h-full">
             {/* Top info */}
             <div className="w-full flex justify-between items-center text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
               <span>Estúdio de Validação Digital</span>
@@ -457,7 +457,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
                 background: `radial-gradient(circle, ${brandColor}20 0%, transparent 80%)`
               }}
             >
-              <div className="absolute inset-0 border border-white/5 rounded-2xl m-2 bg-neutral-950/40 flex items-center justify-center">
+              <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-2xl m-2 bg-neutral-50/40 dark:bg-neutral-950/40 flex items-center justify-center">
                 <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest text-center leading-normal">
                   Mockup Geométrico<br/>
                   <strong className="text-gold/60 font-semibold">Alta Precisão</strong>
@@ -559,7 +559,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
 
                   {/* Dynamic Micro Shadow projection layer for physical depth */}
                   <div 
-                    className="absolute inset-0 bg-black/10 mix-blend-color-burn filter blur-[0.5px] pointer-events-none rounded"
+                    className="absolute inset-0 bg-white/10 dark:bg-black/10 mix-blend-color-burn filter blur-[0.5px] pointer-events-none rounded"
                     style={{ opacity: activeTechnique === "debossing" ? 0.8 : 0.2 }}
                   />
                 </div>
@@ -1881,13 +1881,13 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
     <div className="relative w-full aspect-square flex flex-col items-center justify-center select-none">
       
       {/* Floating glassmorphic view mode toggle bar */}
-      <div className="absolute top-2 right-2 z-10 flex bg-black/75 backdrop-blur-md border border-white/10 rounded-full p-1 shadow-lg gap-1">
+      <div className="absolute top-2 right-2 z-10 flex bg-white/75 dark:bg-black/75 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full p-1 shadow-lg gap-1">
         <button
           onClick={() => onChangeViewMode?.("photo")}
           className={`flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider py-1 px-2.5 rounded-full transition-all duration-300 ${
             viewMode === "photo"
               ? "bg-gold text-black font-bold shadow-md shadow-gold/20 scale-102"
-              : "text-neutral-400 hover:text-white hover:bg-white/5"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:text-white hover:bg-white/5"
           }`}
           title="Ver Mockup em Alta Resolução"
         >
@@ -1899,7 +1899,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
           className={`flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider py-1 px-2.5 rounded-full transition-all duration-300 ${
             viewMode === "vector"
               ? "bg-gold text-black font-bold shadow-md shadow-gold/20 scale-102"
-              : "text-neutral-400 hover:text-white hover:bg-white/5"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:text-white hover:bg-white/5"
           }`}
           title="Ver Vetor Técnico 3D"
         >
@@ -1911,7 +1911,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
           className={`flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider py-1 px-2.5 rounded-full transition-all duration-300 ${
             viewMode === "3d"
               ? "bg-gold text-black font-bold shadow-md shadow-gold/20 scale-102"
-              : "text-neutral-400 hover:text-white hover:bg-white/5"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-black dark:text-white hover:bg-white/5"
           }`}
           title="Ver Visualizador 3D PBR Real"
         >
@@ -1991,7 +1991,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
           )}
 
           {/* Floating Technical Stats panel at the bottom center */}
-          <div className="absolute bottom-2 left-2 right-2 bg-neutral-950/95 border border-teal-500/35 rounded-xl px-3 py-2 flex items-center justify-between text-[8px] font-mono text-teal-400 backdrop-blur-sm shadow-xl">
+          <div className="absolute bottom-2 left-2 right-2 bg-neutral-50/95 dark:bg-neutral-950/95 border border-teal-500/35 rounded-xl px-3 py-2 flex items-center justify-between text-[8px] font-mono text-teal-400 backdrop-blur-sm shadow-xl">
             <div className="flex gap-3">
               <span>ALINHAMENTO: <strong className="text-teal-200">CENTRO REAL</strong></span>
               <span>•</span>

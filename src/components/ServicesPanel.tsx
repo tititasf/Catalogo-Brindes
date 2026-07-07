@@ -31,7 +31,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       visualEffect: "Acabamento fosco texturizado de altíssimo contraste",
       setupTime: "48 horas úteis para calibração de arquivo técnico",
       sampleMaterial: "metal",
-      sampleBg: "bg-neutral-800",
+      sampleBg: "bg-neutral-200 dark:bg-neutral-800",
       images: ["/assets/images/laser_steel.jpg", "/assets/images/laser_wood.jpg"]
     },
     {
@@ -55,7 +55,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       visualEffect: "Reflexos espelhados de alto brilho com contornos nítidos",
       setupTime: "3 dias úteis para calibração de matriz e matrizes de teste",
       sampleMaterial: "glass", // simulated dark carbon fiber card
-      sampleBg: "bg-neutral-900",
+      sampleBg: "bg-neutral-100 dark:bg-neutral-900",
       images: ["/assets/images/hot_stamping_macro.jpg"]
     },
     {
@@ -79,7 +79,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       recommendedMaterial: "Ecobags, Canvas, Caixas Kraft e Embalagens",
       setupTime: "48 horas para gravação dos quadros serigráficos",
       sampleMaterial: "fabric",
-      sampleBg: "bg-neutral-800"
+      sampleBg: "bg-neutral-200 dark:bg-neutral-800"
     }
   ];
 
@@ -93,7 +93,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
     switch (selectedTech.id) {
       case "laser":
         return (
-          <div className="relative w-full h-44 rounded-2xl bg-neutral-900 border border-neutral-800 flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative w-full h-44 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col items-center justify-center overflow-hidden">
             {/* Metal brushed hairline background */}
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff11_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none" />
             <div className="absolute top-2 left-2 text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
@@ -102,7 +102,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
             
             {/* The laser mark with engraved styling (brushed look inside, high-precision contrast) */}
             <div className="text-center space-y-1.5 z-10">
-              <span className="text-[9px] font-mono tracking-[0.3em] text-neutral-400 block uppercase">
+              <span className="text-[9px] font-mono tracking-[0.3em] text-neutral-600 dark:text-neutral-400 block uppercase">
                 OPUS LABORATORY
               </span>
               <h5 
@@ -157,7 +157,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
       case "hotstamping":
         return (
-          <div className="relative w-full h-44 rounded-2xl bg-neutral-950 border border-neutral-900 flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative w-full h-44 rounded-2xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-100 dark:border-neutral-900 flex flex-col items-center justify-center overflow-hidden">
             {/* Fine linen background */}
             <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
             <div className="absolute top-2 left-2 text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
@@ -188,7 +188,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
       case "uv":
         return (
-          <div className="relative w-full h-44 rounded-2xl bg-[#0d0d0d] border border-neutral-900 flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative w-full h-44 rounded-2xl bg-[#0d0d0d] border border-neutral-100 dark:border-neutral-900 flex flex-col items-center justify-center overflow-hidden">
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
             <div className="absolute top-2 left-2 text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
               Amostra: Polímero Fosco Antiderrapante Matte
@@ -204,7 +204,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
               </h5>
               <div className="flex items-center justify-center gap-2">
                 <span className="h-1 w-1 rounded-full" style={{ backgroundColor: brandColor }} />
-                <span className="text-[8px] font-mono text-neutral-300 uppercase tracking-widest">
+                <span className="text-[8px] font-mono text-neutral-700 dark:text-neutral-300 uppercase tracking-widest">
                   PANTONE SIMULATED
                 </span>
                 <span className="h-1 w-1 rounded-full" style={{ backgroundColor: brandColor }} />
@@ -225,7 +225,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
       case "silk":
         return (
-          <div className="relative w-full h-44 rounded-2xl bg-neutral-900 border border-neutral-800 flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative w-full h-44 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col items-center justify-center overflow-hidden">
             {/* Fabric texture background */}
             <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNMCAwbDRsNCIgc3Ryb2tlPSIjMjIyIi8+PC9zdmc+')] pointer-events-none" />
             
@@ -236,7 +236,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
               >
                 {safeText}
               </h5>
-              <span className="text-[7.5px] font-mono text-neutral-400 block uppercase tracking-wider bg-black/50 px-2 py-1 rounded">
+              <span className="text-[7.5px] font-mono text-neutral-600 dark:text-neutral-400 block uppercase tracking-wider bg-white/50 dark:bg-black/50 px-2 py-1 rounded">
                 Serigrafia de Alta Densidade
               </span>
             </div>
@@ -263,10 +263,10 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
             <span className="text-[10px] font-mono tracking-[0.3em] text-gold uppercase block">
               ESTILOS E TECNOLOGIA
             </span>
-            <h3 className="text-2xl font-sans font-semibold text-white tracking-tight">
+            <h3 className="text-2xl font-sans font-semibold text-black dark:text-white tracking-tight">
               A Gravação Perfeita
             </h3>
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs text-neutral-600 dark:text-neutral-400">
               Nossa fábrica está equipada com maquinário europeu calibrado individualmente por especialistas em materiais finos. Escolha um método abaixo para visualizar a dinâmica:
             </p>
           </div>
@@ -280,12 +280,12 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
                   onClick={() => setActiveTechId(t.id)}
                   className={`w-full text-left p-4 rounded-xl border transition-all duration-300 flex items-center justify-between group ${
                     isActive
-                      ? "bg-neutral-900 border-gold/45 text-white shadow-lg shadow-gold/5"
-                      : "bg-black/30 border-white/5 text-neutral-400 hover:text-white hover:border-white/10"
+                      ? "bg-neutral-100 dark:bg-neutral-900 border-gold/45 text-black dark:text-white shadow-lg shadow-gold/5"
+                      : "bg-white/30 dark:bg-black/30 border-black/5 dark:border-white/5 text-neutral-600 dark:text-neutral-400 hover:text-black dark:text-white hover:border-black/10 dark:border-white/10"
                   }`}
                 >
                   <div className="space-y-1">
-                    <h4 className={`text-xs font-sans font-semibold ${isActive ? "text-gold" : "text-neutral-300"}`}>
+                    <h4 className={`text-xs font-sans font-semibold ${isActive ? "text-gold" : "text-neutral-700 dark:text-neutral-300"}`}>
                       {t.name}
                     </h4>
                     <p className="text-[10px] text-neutral-500 leading-tight">
@@ -293,7 +293,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-[8px] font-mono bg-neutral-950 text-neutral-500 px-2 py-0.5 rounded border border-neutral-900 group-hover:border-neutral-800 transition-all">
+                    <span className="text-[8px] font-mono bg-neutral-50 dark:bg-neutral-950 text-neutral-500 px-2 py-0.5 rounded border border-neutral-100 dark:border-neutral-900 group-hover:border-neutral-200 dark:border-neutral-800 transition-all">
                       SETUP: {t.id === "laser" ? "48H" : "72H"}
                     </span>
                   </div>
@@ -305,13 +305,13 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
         {/* Right Side: Interactive Simulation Sandbox */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="bg-neutral-950 border border-white/5 p-6 rounded-3xl space-y-6 shadow-2xl relative">
+          <div className="bg-neutral-50 dark:bg-neutral-950 border border-black/5 dark:border-white/5 p-6 rounded-3xl space-y-6 shadow-2xl relative">
             <div className="absolute top-0 right-0 w-72 h-72 bg-gold/5 rounded-full blur-[80px] pointer-events-none" />
 
-            <div className="flex items-center justify-between border-b border-white/5 pb-4">
+            <div className="flex items-center justify-between border-b border-black/5 dark:border-white/5 pb-4">
               <div className="flex items-center gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
-                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
                   Simulador de Amostra Técnica
                 </span>
               </div>
@@ -325,7 +325,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
             {/* Specifications Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-sans pt-2">
-              <div className="bg-neutral-900/40 border border-white/5 p-4 rounded-xl space-y-1.5">
+              <div className="bg-neutral-100/40 dark:bg-neutral-900/40 border border-black/5 dark:border-white/5 p-4 rounded-xl space-y-1.5">
                 <span className="text-[9px] font-mono uppercase text-neutral-500 block">
                   Materiais Recomendados:
                 </span>
@@ -334,7 +334,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
                 </p>
               </div>
 
-              <div className="bg-neutral-900/40 border border-white/5 p-4 rounded-xl space-y-1.5">
+              <div className="bg-neutral-100/40 dark:bg-neutral-900/40 border border-black/5 dark:border-white/5 p-4 rounded-xl space-y-1.5">
                 <span className="text-[9px] font-mono uppercase text-neutral-500 block">
                   Efeito Estético Estimado:
                 </span>
@@ -345,7 +345,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
             </div>
 
             {/* Advisory Notice */}
-            <div className="flex gap-2.5 bg-gold/5 border border-gold/15 rounded-xl p-3.5 text-[10px] text-neutral-400 leading-normal">
+            <div className="flex gap-2.5 bg-gold/5 border border-gold/15 rounded-xl p-3.5 text-[10px] text-neutral-600 dark:text-neutral-400 leading-normal">
               <Info className="text-gold shrink-0 mt-0.5" size={13} />
               <p>
                 <strong>Observação de Tolerância:</strong> Por se tratar de processos termo-químicos em superfícies orgânicas naturais (como couro e madeira), podem ocorrer ligeiras variações de tonalidade e profundidade de gravação entre diferentes unidades. Isso ratifica a exclusividade e natureza rústico-nobre do produto.
@@ -354,13 +354,13 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
             {/* High Definition Real World Macros */}
             {selectedTech.images && selectedTech.images.length > 0 && (
-              <div className="space-y-3 pt-4 border-t border-white/5">
-                <span className="text-[10px] font-mono uppercase text-neutral-400 tracking-widest flex items-center gap-2">
+              <div className="space-y-3 pt-4 border-t border-black/5 dark:border-white/5">
+                <span className="text-[10px] font-mono uppercase text-neutral-600 dark:text-neutral-400 tracking-widest flex items-center gap-2">
                   <Star size={10} className="text-gold" /> Casos Reais & Acervo (Macros 8K)
                 </span>
                 <div className="grid grid-cols-2 gap-4">
                   {selectedTech.images.map((img, i) => (
-                    <div key={i} className="rounded-xl overflow-hidden border border-white/10 aspect-video relative group bg-black">
+                    <div key={i} className="rounded-xl overflow-hidden border border-black/10 dark:border-white/10 aspect-video relative group bg-white dark:bg-black">
                       <img src={img} alt={`${selectedTech.name} amostra ${i+1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none rounded-xl" />
                     </div>

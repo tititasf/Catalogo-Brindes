@@ -549,21 +549,21 @@ export function ThreePBRStudio({
   }, [logoText, brandColor, activeTechnique, logoType, logoUrl]);
 
   return (
-    <div className="relative w-full h-full min-h-[340px] flex items-center justify-center bg-[#030303] overflow-hidden rounded-2xl border border-white/5">
+    <div className="relative w-full h-full min-h-[340px] flex items-center justify-center bg-[#030303] overflow-hidden rounded-2xl border border-black/5 dark:border-white/5">
       {/* Dynamic 3D Mount Node */}
       <div ref={mountRef} className="w-full h-full min-h-[340px] cursor-grab active:cursor-grabbing" />
 
       {loading && (
-        <div className="absolute inset-0 bg-neutral-950 flex flex-col items-center justify-center space-y-3">
+        <div className="absolute inset-0 bg-neutral-50 dark:bg-neutral-950 flex flex-col items-center justify-center space-y-3">
           <div className="w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin" />
-          <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
+          <span className="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 uppercase tracking-widest">
             Iniciando Studio 3D WebGL...
           </span>
         </div>
       )}
 
       {/* Floating Interactive Controller Overlay */}
-      <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full text-[9px] font-mono text-neutral-400 pointer-events-none select-none">
+      <div className="absolute bottom-3 right-3 bg-white/80 dark:bg-black/80 backdrop-blur-md border border-black/10 dark:border-white/10 px-3 py-1.5 rounded-full text-[9px] font-mono text-neutral-600 dark:text-neutral-400 pointer-events-none select-none">
         ← Arraste para girar em 3D →
       </div>
     </div>
