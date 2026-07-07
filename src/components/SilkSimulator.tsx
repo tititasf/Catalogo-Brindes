@@ -6,9 +6,11 @@ interface SilkSimulatorProps {
   logoText: string;
   brandColor: string;
   brandFont?: string;
+  logoType?: "text" | "upload";
+  logoUrl?: string;
 }
 
-export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandColor, brandFont = "font-sans" }) => {
+export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandColor, brandFont = "font-sans", logoType = "text", logoUrl }) => {
   const [isPrinting, setIsPrinting] = useState<boolean>(false);
   const [printProgress, setPrintProgress] = useState<number>(0);
   const [hasFinished, setHasFinished] = useState<boolean>(false);
@@ -19,7 +21,7 @@ export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandCol
     setIsPrinting(false);
     setPrintProgress(0);
     setHasFinished(false);
-  }, [logoText, brandColor, brandFont]);
+  }, [logoText, brandColor, brandFont, logoType, logoUrl]);
 
   const handleStartPrinting = () => {
     if (isPrinting) return;
@@ -87,24 +89,36 @@ export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandCol
                 <rect x="75" y="85" width="150" height="170" rx="6" fill="none" stroke="rgba(0,0,0,0.1)" strokeWidth="1" strokeDasharray="3 3" />
 
                 <g clipPath="url(#silk-clip)">
-                  <text 
-                    x="150" y="170" 
-                    textAnchor="middle" 
-                    fill={brandColor} 
-                    style={{ fontFamily: brandFont === 'font-sans' ? 'Inter, sans-serif' : brandFont === 'font-serif' ? 'serif' : 'JetBrains Mono, monospace', fontSize: "16px", fontWeight: "bold", letterSpacing: "0.15em", mixBlendMode: "multiply" }}
-                  >
-                    {displayLogoText}
-                  </text>
+                  {logoType === "upload" && logoUrl ? (
+                    <image 
+                      href={logoUrl} 
+                      x="100" y="145" 
+                      width="100" height="50" 
+                      preserveAspectRatio="xMidYMid meet" 
+                      style={{ filter: `opacity(0.9) drop-shadow(0px 0px 0px ${brandColor}) grayscale(1) brightness(0) drop-shadow(0px 0px 0px ${brandColor})`, mixBlendMode: "multiply" }} 
+                    />
+                  ) : (
+                    <text 
+                      x="150" y="170" 
+                      textAnchor="middle" 
+                      fill={brandColor} 
+                      style={{ fontFamily: brandFont === 'font-sans' ? 'Inter, sans-serif' : brandFont === 'font-serif' ? 'serif' : 'JetBrains Mono, monospace', fontSize: "16px", fontWeight: "bold", letterSpacing: "0.15em", mixBlendMode: "multiply" }}
+                    >
+                      {displayLogoText}
+                    </text>
+                  )}
                   
-                  <text 
-                    x="150" y="170" 
-                    textAnchor="middle" 
-                    fill="url(#canvas-texture)" 
-                    opacity="0.5"
-                    style={{ fontFamily: brandFont === 'font-sans' ? 'Inter, sans-serif' : brandFont === 'font-serif' ? 'serif' : 'JetBrains Mono, monospace', fontSize: "16px", fontWeight: "bold", letterSpacing: "0.15em", mixBlendMode: "overlay" }}
-                  >
-                    {displayLogoText}
-                  </text>
+                  {logoType !== "upload" && (
+                    <text 
+                      x="150" y="170" 
+                      textAnchor="middle" 
+                      fill="url(#canvas-texture)" 
+                      opacity="0.5"
+                      style={{ fontFamily: brandFont === 'font-sans' ? 'Inter, sans-serif' : brandFont === 'font-serif' ? 'serif' : 'JetBrains Mono, monospace', fontSize: "16px", fontWeight: "bold", letterSpacing: "0.15em", mixBlendMode: "overlay" }}
+                    >
+                      {displayLogoText}
+                    </text>
+                  )}
                 </g>
               </g>
             </svg>

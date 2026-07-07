@@ -225,7 +225,7 @@ export default function App() {
 
         {/* Right: Immersive Silk Screen Simulator Component */}
         <div className="lg:col-span-7">
-          <SilkSimulator logoText={logoText} brandColor={brandColor} brandFont={brandFont} />
+          <SilkSimulator logoText={logoText} brandColor={brandColor} brandFont={brandFont} logoType={logoType} logoUrl={logoUrl} />
         </div>
 
       </section>
