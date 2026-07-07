@@ -166,13 +166,17 @@ export default function App() {
               </div>
             </div>
 
-            {/* Theme Toggle */}
+            {/* Theme Toggle EXPLICITO */}
             <button 
               onClick={toggleTheme}
-              className="flex items-center justify-center w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-gold hover:border-gold transition-colors"
-              title="Mudar Tema"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-neutral-100 dark:bg-[#0c0c0c] border border-neutral-300 dark:border-white/10 text-neutral-800 dark:text-neutral-300 hover:text-gold hover:border-gold dark:hover:text-gold dark:hover:border-gold transition-colors font-mono text-[10px] uppercase tracking-wider font-bold shadow-sm"
+              title="Alternar entre visualização Claro e Escuro"
             >
-              {isDark ? <Sun size={14} /> : <Moon size={14} />}
+              {isDark ? (
+                <><Moon size={14} className="text-gold" /> MODO: ESCURO</>
+              ) : (
+                <><Sun size={14} className="text-gold" /> MODO: CLARO</>
+              )}
             </button>
 
             {/* Micro Indicator */}
