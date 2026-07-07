@@ -60,7 +60,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
     blendMode?: React.CSSProperties["mixBlendMode"];
   }> = {
     "mochila-executiva": {
-      url: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800",
+      url: "/assets/images/mochila_hero.jpg",
       defaultX: 50,
       defaultY: 58,
       defaultWidth: 20,
@@ -69,7 +69,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "normal"
     },
     "garfa-termica-led": {
-      url: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&q=80&w=800",
+      url: "/assets/images/garrafa_hero.jpg",
       defaultX: 49,
       defaultY: 55,
       defaultWidth: 16,
@@ -78,7 +78,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "multiply"
     },
     "garrafa-termica-led": {
-      url: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&q=80&w=800",
+      url: "/assets/images/garrafa_hero.jpg",
       defaultX: 49,
       defaultY: 55,
       defaultWidth: 16,
@@ -87,7 +87,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "multiply"
     },
     "caderno-moleskine": {
-      url: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800",
+      url: "/assets/images/moleskine_hero.jpg",
       defaultX: 51,
       defaultY: 50,
       defaultWidth: 24,
@@ -96,11 +96,11 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "multiply"
     },
     "kit-welcome-onboarding": {
-      url: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800",
+      url: "/assets/images/kit_onboarding_open.jpg",
       defaultX: 50,
-      defaultY: 48,
-      defaultWidth: 22,
-      defaultHeight: 12,
+      defaultY: 45,
+      defaultWidth: 35,
+      defaultHeight: 25,
       defaultRotation: 0,
       blendMode: "normal"
     },
@@ -114,11 +114,11 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
       blendMode: "normal"
     },
     "copo-termico-stanley": {
-      url: "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&q=80&w=800",
+      url: "/assets/images/copo_stanley_hero.jpg",
       defaultX: 50,
-      defaultY: 46,
-      defaultWidth: 18,
-      defaultHeight: 12,
+      defaultY: 50,
+      defaultWidth: 22,
+      defaultHeight: 18,
       defaultRotation: 0,
       blendMode: "multiply"
     },

@@ -15,8 +15,9 @@ interface PersonalizationType {
   recommendedMaterial: string;
   visualEffect: string;
   setupTime: string;
-  sampleMaterial: "wood" | "leather" | "metal" | "glass";
+  sampleMaterial: "wood" | "leather" | "metal" | "glass" | "fabric";
   sampleBg: string;
+  images?: string[];
 }
 
 export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
@@ -30,7 +31,8 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       visualEffect: "Acabamento fosco texturizado de altíssimo contraste",
       setupTime: "48 horas úteis para calibração de arquivo técnico",
       sampleMaterial: "metal",
-      sampleBg: "bg-neutral-800"
+      sampleBg: "bg-neutral-800",
+      images: ["/assets/images/laser_steel.jpg", "/assets/images/laser_wood.jpg"]
     },
     {
       id: "debossing",
@@ -41,7 +43,8 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       visualEffect: "Efeito tridimensional tátil, sutil e profundamente luxuoso",
       setupTime: "3 dias úteis para fundição do clichê de latão",
       sampleMaterial: "leather",
-      sampleBg: "bg-amber-950"
+      sampleBg: "bg-amber-950",
+      images: ["/assets/images/debossing_leather.jpg"]
     },
     {
       id: "hotstamping",
@@ -52,7 +55,8 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       visualEffect: "Reflexos espelhados de alto brilho com contornos nítidos",
       setupTime: "3 dias úteis para calibração de matriz e matrizes de teste",
       sampleMaterial: "glass", // simulated dark carbon fiber card
-      sampleBg: "bg-neutral-900"
+      sampleBg: "bg-neutral-900",
+      images: ["/assets/images/hot_stamping_macro.jpg"]
     },
     {
       id: "uv",
@@ -63,7 +67,20 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       recommendedMaterial: "Polímeros, Placas de Vidro, Dispositivos Tecnológicos e Garrafas Térmicas",
       setupTime: "24 horas para perfil de cor digital e prova de impressão",
       sampleMaterial: "wood",
-      sampleBg: "bg-amber-900"
+      sampleBg: "bg-amber-900",
+      images: ["/assets/images/uv_tatil.jpg"]
+    },
+    {
+      id: "silk",
+      name: "Silk Screen Premium",
+      tagline: "Serigrafia industrial de alta precisão e cobertura",
+      description: "Aplicação de tintas ricas e densas através de telas microperfuradas. Ideal para grandes áreas, oferecendo excelente opacidade e cor vibrante sobre substratos variados, com acabamento liso e eterno.",
+      visualEffect: "Cobertura de tinta sólida perfeita com cantos nítidos",
+      recommendedMaterial: "Ecobags, Canvas, Caixas Kraft e Embalagens",
+      setupTime: "48 horas para gravação dos quadros serigráficos",
+      sampleMaterial: "fabric",
+      sampleBg: "bg-neutral-800",
+      images: ["/assets/images/silk_macro.jpg"]
     }
   ];
 
@@ -207,6 +224,26 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
           </div>
         );
 
+      case "silk":
+        return (
+          <div className="relative w-full h-44 rounded-2xl bg-neutral-900 border border-neutral-800 flex flex-col items-center justify-center overflow-hidden">
+            {/* Fabric texture background */}
+            <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNMCAwbDRsNCIgc3Ryb2tlPSIjMjIyIi8+PC9zdmc+')] pointer-events-none" />
+            
+            <div className="text-center space-y-1.5 z-10 p-4">
+              <h5 
+                className="text-3xl font-sans font-black tracking-tight uppercase"
+                style={{ color: "#ffffff", textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+              >
+                {safeText}
+              </h5>
+              <span className="text-[7.5px] font-mono text-neutral-400 block uppercase tracking-wider bg-black/50 px-2 py-1 rounded">
+                Serigrafia de Alta Densidade
+              </span>
+            </div>
+          </div>
+        );
+
       default:
         return null;
     }
@@ -315,6 +352,23 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
                 <strong>Observação de Tolerância:</strong> Por se tratar de processos termo-químicos em superfícies orgânicas naturais (como couro e madeira), podem ocorrer ligeiras variações de tonalidade e profundidade de gravação entre diferentes unidades. Isso ratifica a exclusividade e natureza rústico-nobre do produto.
               </p>
             </div>
+
+            {/* High Definition Real World Macros */}
+            {selectedTech.images && selectedTech.images.length > 0 && (
+              <div className="space-y-3 pt-4 border-t border-white/5">
+                <span className="text-[10px] font-mono uppercase text-neutral-400 tracking-widest flex items-center gap-2">
+                  <Star size={10} className="text-gold" /> Casos Reais & Acervo (Macros 8K)
+                </span>
+                <div className="grid grid-cols-2 gap-4">
+                  {selectedTech.images.map((img, i) => (
+                    <div key={i} className="rounded-xl overflow-hidden border border-white/10 aspect-video relative group bg-black">
+                      <img src={img} alt={`${selectedTech.name} amostra ${i+1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none rounded-xl" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
