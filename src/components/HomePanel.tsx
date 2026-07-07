@@ -287,20 +287,28 @@ export function HomePanel({
                      transformStyle: 'preserve-3d'
                    }}
                  >
-                   {/* Laser reflection overlay animation */}
-                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-transparent animate-[shimmer_3s_infinite_linear] bg-[length:100%_200%] mix-blend-overlay" style={{ WebkitBackgroundClip: 'text', color: 'transparent' }}>
-                     <span className={`text-xl font-bold tracking-widest ${brandFont}`}>
-                       {logoText || "OPUS"}
-                     </span>
-                   </div>
-                   
-                   {/* Laser engraved base */}
-                   <span 
-                     className={`text-xl font-bold tracking-widest opacity-90 ${brandFont}`}
-                     style={{ textShadow: "0px 1px 1px rgba(255,255,255,0.4), 0px -1px 2px rgba(0,0,0,0.9)" }}
-                   >
-                     {logoText || "OPUS"}
-                   </span>
+                   {logoType === "upload" && logoUrl ? (
+                     <div className="flex flex-col items-center justify-center opacity-85" style={{ filter: "drop-shadow(0px 1px 1px rgba(255,255,255,0.4)) drop-shadow(0px -1px 2px rgba(0,0,0,0.9)) brightness(1.5) grayscale(1)" }}>
+                       <img src={logoUrl} alt="Logo" className="w-24 h-24 object-contain" />
+                     </div>
+                   ) : (
+                     <>
+                       {/* Laser reflection overlay animation */}
+                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-transparent animate-[shimmer_3s_infinite_linear] bg-[length:100%_200%] mix-blend-overlay" style={{ WebkitBackgroundClip: 'text', color: 'transparent' }}>
+                         <span className={`text-xl font-bold tracking-widest ${brandFont}`}>
+                           {logoText || "OPUS"}
+                         </span>
+                       </div>
+                       
+                       {/* Laser engraved base */}
+                       <span 
+                         className={`text-xl font-bold tracking-widest opacity-90 ${brandFont}`}
+                         style={{ textShadow: "0px 1px 1px rgba(255,255,255,0.4), 0px -1px 2px rgba(0,0,0,0.9)" }}
+                       >
+                         {logoText || "OPUS"}
+                       </span>
+                     </>
+                   )}
                  </div>
               </div>
 
@@ -327,14 +335,20 @@ export function HomePanel({
                      mixBlendMode: "multiply"
                    }}
                  >
-                   <span 
-                     className={`text-2xl font-bold tracking-widest ${brandFont}`}
-                     style={{
-                       textShadow: "1px 1px 2px rgba(255,255,255,0.1), -1px -1px 2px rgba(0,0,0,0.7), inset 0px 2px 4px rgba(0,0,0,0.8)"
-                     }}
-                   >
-                     {logoText || "OPUS"}
-                   </span>
+                   {logoType === "upload" && logoUrl ? (
+                     <div className="flex flex-col items-center justify-center opacity-85" style={{ filter: "drop-shadow(1px 1px 2px rgba(255,255,255,0.1)) drop-shadow(-1px -1px 2px rgba(0,0,0,0.7))", mixBlendMode: "multiply" }}>
+                       <img src={logoUrl} alt="Logo" className="w-24 h-24 object-contain brightness-0" />
+                     </div>
+                   ) : (
+                     <span 
+                       className={`text-2xl font-bold tracking-widest ${brandFont}`}
+                       style={{
+                         textShadow: "1px 1px 2px rgba(255,255,255,0.1), -1px -1px 2px rgba(0,0,0,0.7), inset 0px 2px 4px rgba(0,0,0,0.8)"
+                       }}
+                     >
+                       {logoText || "OPUS"}
+                     </span>
+                   )}
                  </div>
               </div>
 

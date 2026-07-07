@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { PRODUCTS } from "./data";
 import { Product, PersonalizationTechnique } from "./types";
 import { ProductVisualizer } from "./components/ProductVisualizer";
-import { CategoryShowcase } from "./components/CategoryShowcase";
+
 import { SilkSimulator } from "./components/SilkSimulator";
 import { CurationBrief } from "./components/CurationBrief";
 import { AboutUs } from "./components/AboutUs";
