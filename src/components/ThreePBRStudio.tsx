@@ -6,6 +6,8 @@ interface ThreePBRStudioProps {
   brandColor: string;
   logoText: string;
   activeTechnique: string;
+  logoType?: "text" | "upload";
+  logoUrl?: string;
   isExploded?: boolean;
 }
 
@@ -14,6 +16,8 @@ export function ThreePBRStudio({
   brandColor,
   logoText,
   activeTechnique,
+  logoType = "text",
+  logoUrl,
   isExploded = false,
 }: ThreePBRStudioProps) {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -32,83 +36,132 @@ export function ThreePBRStudio({
   const internalMeshRef = useRef<THREE.Mesh | null>(null);
 
   // Helper to draw a crisp logo onto a high-res hidden canvas for 3D projection
-  const createLogoCanvasTexture = (text: string, color: string, tech: string) => {
+  const createLogoCanvasTexture = (text: string, color: string, tech: string, type: "text" | "upload", url?: string) => {
     const canvas = document.createElement("canvas");
     canvas.width = 1024;
     canvas.height = 1024;
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
 
-    // Clear transparent
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Technique-based styling
-    let textColor = "#ffffff";
-    let isMetallic = false;
-
-    if (tech === "laser") {
-      const isWood = productId.includes("bambu") || productId.includes("vinho") || productId.includes("churrasco");
-      textColor = isWood ? "#241408" : "#d1d5db"; // Engraved brown vs silver metal
-      isMetallic = !isWood;
-    } else if (tech === "hot_stamping") {
-      textColor = "#eab308"; // Gold foil
-      isMetallic = true;
-    } else if (tech === "debossing") {
-      textColor = "#1e140c"; // Deep dark leather press
-    } else {
-      textColor = color; // Brand color
-    }
-
-    // Draw luxury bounding guides (Technical QA Look)
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(50, 50, canvas.width - 100, canvas.height - 100);
-
-    // Draw main client text
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    
-    // Main brand text
-    const safeText = (text || "OPUS CO.").toUpperCase();
-    ctx.font = "bold 64px 'Inter', sans-serif";
-    
-    if (isMetallic) {
-      // Metallic shine gradient on the text
-      const grad = ctx.createLinearGradient(0, 300, 0, 700);
-      grad.addColorStop(0, "#ffffff");
-      grad.addColorStop(0.3, textColor);
-      grad.addColorStop(0.5, "#ffffff");
-      grad.addColorStop(0.7, textColor);
-      grad.addColorStop(1, "#111111");
-      ctx.fillStyle = grad;
-    } else {
-      ctx.fillStyle = textColor;
-    }
-
-    ctx.shadowColor = tech === "debossing" ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0.2)";
-    ctx.shadowBlur = tech === "debossing" ? 12 : 4;
-    ctx.shadowOffsetX = tech === "debossing" ? -4 : 1;
-    ctx.shadowOffsetY = tech === "debossing" ? -4 : 1;
-
-    // Render primary brand line
-    ctx.fillText(safeText, canvas.width / 2, canvas.height / 2 - 20);
-
-    // Draw professional subtitle / quality anchor
-    ctx.shadowColor = "transparent";
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
-    ctx.font = "500 24px 'JetBrains Mono', monospace";
-    ctx.letterSpacing = "6px";
-    ctx.fillText("B2B PREMIUM SHOWROOM", canvas.width / 2, canvas.height / 2 + 60);
-
-    // Technique indicator badge
-    ctx.fillStyle = textColor;
-    ctx.font = "bold 18px 'JetBrains Mono', monospace";
-    ctx.fillText(`GRAVAÇÃO: ${tech.toUpperCase()}`, canvas.width / 2, canvas.height / 2 + 120);
-
     const texture = new THREE.CanvasTexture(canvas);
     texture.wrapS = THREE.ClampToEdgeWrapping;
     texture.wrapT = THREE.ClampToEdgeWrapping;
+
+    const renderTechniqueEffect = (isUpload: boolean = false) => {
+      // Clear transparent
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Technique-based styling
+      let textColor = "#ffffff";
+      let isMetallic = false;
+
+      if (tech === "laser") {
+        const isWood = productId.includes("bambu") || productId.includes("vinho") || productId.includes("churrasco");
+        textColor = isWood ? "#241408" : "#d1d5db"; // Engraved brown vs silver metal
+        isMetallic = !isWood;
+      } else if (tech === "hot_stamping") {
+        textColor = "#eab308"; // Gold foil
+        isMetallic = true;
+      } else if (tech === "debossing") {
+        textColor = "#1e140c"; // Deep dark leather press
+      } else {
+        textColor = color; // Brand color
+      }
+
+      ctx.shadowColor = tech === "debossing" ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0.2)";
+      ctx.shadowBlur = tech === "debossing" ? 12 : 4;
+      ctx.shadowOffsetX = tech === "debossing" ? -4 : 1;
+      ctx.shadowOffsetY = tech === "debossing" ? -4 : 1;
+
+      if (isUpload && url) {
+        // Draw image instead of text
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          // Calculate scale to fit inside 80% of canvas
+          const scale = Math.min((canvas.width * 0.8) / img.width, (canvas.height * 0.8) / img.height);
+          const w = img.width * scale;
+          const h = img.height * scale;
+          const x = (canvas.width - w) / 2;
+          const y = (canvas.height - h) / 2;
+
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          if (tech === "uv" || tech === "dtg" || tech === "sublimacao" || tech === "resinada") {
+            // Keep original colors for colorful prints
+            ctx.drawImage(img, x, y, w, h);
+          } else {
+            // Silhouette mono coloring (laser, hotstamping, etc)
+            // First draw image
+            ctx.drawImage(img, x, y, w, h);
+            // Then colorize it using global composite operation
+            ctx.globalCompositeOperation = "source-in";
+            
+            if (isMetallic) {
+              const grad = ctx.createLinearGradient(0, y, 0, y + h);
+              grad.addColorStop(0, "#ffffff");
+              grad.addColorStop(0.3, textColor);
+              grad.addColorStop(0.5, "#ffffff");
+              grad.addColorStop(0.7, textColor);
+              grad.addColorStop(1, "#111111");
+              ctx.fillStyle = grad;
+            } else {
+              ctx.fillStyle = textColor;
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = "source-over"; // Reset
+          }
+
+          // Add QA Grid around it
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(50, 50, canvas.width - 100, canvas.height - 100);
+          
+          texture.needsUpdate = true;
+        };
+        img.src = url;
+      } else {
+        // Draw Text
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(50, 50, canvas.width - 100, canvas.height - 100);
+
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        
+        const safeText = (text || "OPUS CO.").toUpperCase();
+        ctx.font = "bold 64px 'Inter', sans-serif";
+        
+        if (isMetallic) {
+          const grad = ctx.createLinearGradient(0, 300, 0, 700);
+          grad.addColorStop(0, "#ffffff");
+          grad.addColorStop(0.3, textColor);
+          grad.addColorStop(0.5, "#ffffff");
+          grad.addColorStop(0.7, textColor);
+          grad.addColorStop(1, "#111111");
+          ctx.fillStyle = grad;
+        } else {
+          ctx.fillStyle = textColor;
+        }
+
+        ctx.fillText(safeText, canvas.width / 2, canvas.height / 2 - 20);
+
+        ctx.shadowColor = "transparent";
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+        ctx.font = "500 24px 'JetBrains Mono', monospace";
+        ctx.letterSpacing = "6px";
+        ctx.fillText("B2B PREMIUM SHOWROOM", canvas.width / 2, canvas.height / 2 + 60);
+
+        ctx.fillStyle = textColor;
+        ctx.font = "bold 18px 'JetBrains Mono', monospace";
+        ctx.fillText(`GRAVAÇÃO: ${tech.toUpperCase()}`, canvas.width / 2, canvas.height / 2 + 120);
+        
+        texture.needsUpdate = true;
+      }
+    };
+
+    renderTechniqueEffect(type === "upload");
     return texture;
   };
 
@@ -183,7 +236,7 @@ export function ThreePBRStudio({
     objectsGroupRef.current = objectsGroup;
 
     // Create dynamic brand texture
-    const logoTex = createLogoCanvasTexture(logoText, brandColor, activeTechnique);
+    const logoTex = createLogoCanvasTexture(logoText, brandColor, activeTechnique, logoType, logoUrl);
     if (logoTex) logoTextureRef.current = logoTex;
 
     // Establish PBR Material settings based on requested technique
@@ -475,7 +528,7 @@ export function ThreePBRStudio({
     }
 
     // 2. Refresh logo text on dynamic canvas texture
-    const newTex = createLogoCanvasTexture(logoText, brandColor, activeTechnique);
+    const newTex = createLogoCanvasTexture(logoText, brandColor, activeTechnique, logoType, logoUrl);
     if (newTex && logoTextureRef.current) {
       logoTextureRef.current.dispose();
       logoTextureRef.current = newTex;
@@ -493,7 +546,7 @@ export function ThreePBRStudio({
         });
       }
     }
-  }, [logoText, brandColor, activeTechnique]);
+  }, [logoText, brandColor, activeTechnique, logoType, logoUrl]);
 
   return (
     <div className="relative w-full h-full min-h-[340px] flex items-center justify-center bg-[#030303] overflow-hidden rounded-2xl border border-white/5">

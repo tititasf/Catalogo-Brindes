@@ -27,7 +27,9 @@ import {
   Ruler,
   PhoneCall,
   Flame,
-  Home
+  Home,
+  Upload,
+  Image as ImageIcon
 } from "lucide-react";
 
 export default function App() {
@@ -37,6 +39,8 @@ export default function App() {
   // Global States for interactive personalization syncing
   const [brandColor, setBrandColor] = useState<string>("#3b82f6");
   const [logoText, setLogoText] = useState<string>("ACME CORP");
+  const [logoType, setLogoType] = useState<"text" | "upload">("text");
+  const [logoUrl, setLogoUrl] = useState<string | undefined>(undefined);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   
   // Hover & Modal Active States
@@ -44,6 +48,16 @@ export default function App() {
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
   const [isCurationOpen, setIsCurationOpen] = useState<boolean>(false);
   const [selectedCurationProductId, setSelectedCurationProductId] = useState<string | undefined>(undefined);
+
+  // Logo Upload Handler
+  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setLogoUrl(url);
+      setLogoType("upload");
+    }
+  };
 
   // Filters
   const categories = [
@@ -81,19 +95,39 @@ export default function App() {
 
           {/* Interactive B2B Personalization Bar - The Psychological "Hack" */}
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto bg-black/90 p-2.5 rounded-2xl border border-white/10 shadow-lg shadow-gold/5">
-            {/* Logo Text Input */}
-            <div className="relative w-full sm:w-56">
-              <span className="absolute left-3 top-2.5 text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
-                Logo:
-              </span>
-              <input
-                type="text"
-                maxLength={18}
-                value={logoText}
-                onChange={(e) => setLogoText(e.target.value)}
-                className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-xl py-1.5 pl-12 pr-3 text-[11px] text-white font-mono uppercase tracking-wider"
-                placeholder="DIGITE SUA MARCA"
-              />
+            {/* Logo Text Input & Upload */}
+            <div className="relative w-full sm:w-64 flex items-center gap-1">
+              <div className="relative flex-1">
+                <span className="absolute left-3 top-2.5 text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
+                  Logo:
+                </span>
+                <input
+                  type="text"
+                  maxLength={18}
+                  value={logoText}
+                  onChange={(e) => {
+                    setLogoText(e.target.value);
+                    setLogoType("text");
+                  }}
+                  className="w-full bg-neutral-900 border border-neutral-800 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-xl py-1.5 pl-12 pr-3 text-[11px] text-white font-mono uppercase tracking-wider"
+                  placeholder="DIGITE SUA MARCA"
+                />
+              </div>
+              
+              <label className="flex-shrink-0 cursor-pointer bg-neutral-900 border border-neutral-800 hover:border-gold hover:text-gold text-neutral-400 p-2 rounded-xl transition-colors" title="Fazer upload do seu Logo (PNG transparente)">
+                <input type="file" accept="image/png, image/svg+xml" className="hidden" onChange={handleLogoUpload} />
+                <Upload size={14} />
+              </label>
+              
+              {logoType === "upload" && (
+                <button 
+                  onClick={() => setLogoType("text")}
+                  className="flex-shrink-0 bg-gold/20 text-gold p-2 rounded-xl border border-gold/30 hover:bg-gold/30 transition-colors"
+                  title="Voltar para logo em texto"
+                >
+                  <ImageIcon size={14} />
+                </button>
+              )}
             </div>
 
             {/* HEX Color Picker */}
@@ -299,7 +333,8 @@ export default function App() {
                       activeTechnique={product.techniques[0]}
                       brandColor={brandColor}
                       logoText={logoText}
-                      logoType="text"
+                      logoType={logoType}
+                      logoUrl={logoUrl}
                       showCustomized={isHovered} // Hover triggers custom state render!
                       isExploded={false}
                     />
@@ -465,7 +500,8 @@ export default function App() {
             product={activeProduct}
             brandColor={brandColor}
             logoText={logoText}
-            logoType="text"
+            logoType={logoType}
+            logoUrl={logoUrl}
             onClose={() => setActiveProduct(null)}
             onOpenCuration={(productId) => {
               setActiveProduct(null);
