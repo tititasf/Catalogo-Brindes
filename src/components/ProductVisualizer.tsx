@@ -518,17 +518,6 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
                     style={{ filter }}
                     referrerPolicy="no-referrer"
                   />
-                  {/* High-Fidelity shadow/texture duplicate overlay to absorb fabric grain */}
-                  <img
-                    src={imageUrl}
-                    alt="Fabric Texture Pass"
-                    className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-55"
-                    style={{
-                      clipPath: "inset(0% 0% 0% 0% round 4px)",
-                      filter: "contrast(1.2) brightness(0.9)",
-                    }}
-                    referrerPolicy="no-referrer"
-                  />
                 </div>
               ) : (
                 <div className="relative text-center select-none w-full flex flex-col justify-center items-center">
@@ -987,9 +976,13 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
                 
                 {/* Small engraving on mug */}
                 {showCustomized && (
-                  <text x="34" y="28" textAnchor="middle" fill="#d1d5db" style={{ fontFamily: "var(--font-mono)", fontSize: "3.5px", letterSpacing: "0.1em" }}>
-                    {logoText ? logoText.slice(0, 8) : "EXCLUSIVO"}
-                  </text>
+                  logoType === "upload" && logoUrl ? (
+                    <image href={logoUrl} x="27.9" y="23.5" width="12.3" height="5.3" preserveAspectRatio="xMidYMid meet" />
+                  ) : (
+                    <text x="34" y="28" textAnchor="middle" fill="#d1d5db" style={{ fontFamily: "var(--font-mono)", fontSize: "3.5px", letterSpacing: "0.1em" }}>
+                      {logoText ? logoText.slice(0, 8) : "EXCLUSIVO"}
+                    </text>
+                  )
                 )}
               </g>
               {isExploded && (
@@ -1015,9 +1008,13 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
 
                 {/* Cover logo */}
                 {showCustomized && (
-                  <text x="38" y="54" textAnchor="middle" fill="url(#gold-gradient)" style={{ fontFamily: "var(--font-sans)", fontSize: "5.5px", letterSpacing: "0.15em", fontWeight: "bold" }}>
-                    {logoText ? logoText.slice(0, 10) : "EXCLUSIVO"}
-                  </text>
+                  logoType === "upload" && logoUrl ? (
+                    <image href={logoUrl} x="28.4" y="46.9" width="19.3" height="8.3" preserveAspectRatio="xMidYMid meet" />
+                  ) : (
+                    <text x="38" y="54" textAnchor="middle" fill="url(#gold-gradient)" style={{ fontFamily: "var(--font-sans)", fontSize: "5.5px", letterSpacing: "0.15em", fontWeight: "bold" }}>
+                      {logoText ? logoText.slice(0, 10) : "EXCLUSIVO"}
+                    </text>
+                  )
                 )}
               </g>
               {isExploded && (
@@ -1273,9 +1270,13 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
 
                 {/* Laser on Knife Blade */}
                 {showCustomized && isExploded && (
-                  <text x="35" y="11" fill="rgba(0,0,0,0.5)" style={{ fontFamily: "var(--font-mono)", fontSize: "4px", fontWeight: "bold" }}>
-                    {logoText ? logoText.slice(0, 8) : "EXCLUSIVO"}
-                  </text>
+                  logoType === "upload" && logoUrl ? (
+                    <image href={logoUrl} x="35" y="5.8" width="14" height="6" preserveAspectRatio="xMidYMid meet" />
+                  ) : (
+                    <text x="35" y="11" fill="rgba(0,0,0,0.5)" style={{ fontFamily: "var(--font-mono)", fontSize: "4px", fontWeight: "bold" }}>
+                      {logoText ? logoText.slice(0, 8) : "EXCLUSIVO"}
+                    </text>
+                  )
                 )}
               </g>
 
@@ -1436,9 +1437,13 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
                 <text x="0" y="-2" textAnchor="middle" fill="#94a3b8" style={{ fontFamily: "var(--font-sans)", fontSize: "4px", fontWeight: "bold" }}>
                   EGYPTIAN COTTON
                 </text>
-                <text x="0" y="3" textAnchor="middle" fill={accentColor} style={{ fontFamily: "var(--font-mono)", fontSize: "3.5px" }}>
-                  {logoText ? logoText.slice(0, 10).toUpperCase() : "CO. DESIGN"}
-                </text>
+                {logoType === "upload" && logoUrl ? (
+                  <image href={logoUrl} x="-6.1" y="-1.5" width="12.3" height="5.3" preserveAspectRatio="xMidYMid meet" />
+                ) : (
+                  <text x="0" y="3" textAnchor="middle" fill={accentColor} style={{ fontFamily: "var(--font-mono)", fontSize: "3.5px" }}>
+                    {logoText ? logoText.slice(0, 10).toUpperCase() : "CO. DESIGN"}
+                  </text>
+                )}
               </g>
             ) : (
               // Main chest logo print
@@ -1513,16 +1518,24 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
             {/* Repeating sublimated client brand logotype on left ribbon segment */}
             {showCustomized && (
               <g transform="translate(100, 110) rotate(78)">
-                <text x="0" y="0" textAnchor="middle" fill="#ffffff" style={{ fontFamily: "var(--font-sans)", fontSize: "5.5px", fontWeight: "bold", letterSpacing: "0.2em" }}>
-                  {logoText ? logoText.toUpperCase() : "EXCLUSIVO"}
-                </text>
+                {logoType === "upload" && logoUrl ? (
+                  <image href={logoUrl} x="-9.6" y="-7.1" width="19.3" height="8.3" preserveAspectRatio="xMidYMid meet" />
+                ) : (
+                  <text x="0" y="0" textAnchor="middle" fill="#ffffff" style={{ fontFamily: "var(--font-sans)", fontSize: "5.5px", fontWeight: "bold", letterSpacing: "0.2em" }}>
+                    {logoText ? logoText.toUpperCase() : "EXCLUSIVO"}
+                  </text>
+                )}
               </g>
             )}
             {showCustomized && (
               <g transform="translate(200, 110) rotate(-78)">
-                <text x="0" y="0" textAnchor="middle" fill="#ffffff" style={{ fontFamily: "var(--font-sans)", fontSize: "5.5px", fontWeight: "bold", letterSpacing: "0.2em" }}>
-                  {logoText ? logoText.toUpperCase() : "EXCLUSIVO"}
-                </text>
+                {logoType === "upload" && logoUrl ? (
+                  <image href={logoUrl} x="-9.6" y="-7.1" width="19.3" height="8.3" preserveAspectRatio="xMidYMid meet" />
+                ) : (
+                  <text x="0" y="0" textAnchor="middle" fill="#ffffff" style={{ fontFamily: "var(--font-sans)", fontSize: "5.5px", fontWeight: "bold", letterSpacing: "0.2em" }}>
+                    {logoText ? logoText.toUpperCase() : "EXCLUSIVO"}
+                  </text>
+                )}
               </g>
             )}
           </svg>
@@ -1676,9 +1689,13 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
 
                 {/* Micro logo on opener casing */}
                 {showCustomized && (
-                  <text x="11" y="22" textAnchor="middle" fill="#d1d5db" style={{ fontFamily: "var(--font-sans)", fontSize: "2.5px" }}>
-                    {logoText ? logoText.slice(0, 8).toUpperCase() : "OPUS"}
-                  </text>
+                  logoType === "upload" && logoUrl ? (
+                    <image href={logoUrl} x="6.6" y="18.8" width="8.8" height="3.8" preserveAspectRatio="xMidYMid meet" />
+                  ) : (
+                    <text x="11" y="22" textAnchor="middle" fill="#d1d5db" style={{ fontFamily: "var(--font-sans)", fontSize: "2.5px" }}>
+                      {logoText ? logoText.slice(0, 8).toUpperCase() : "OPUS"}
+                    </text>
+                  )
                 )}
               </g>
 
