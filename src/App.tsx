@@ -38,6 +38,7 @@ export default function App() {
 
   // Global States for interactive personalization syncing
   const [brandColor, setBrandColor] = useState<string>("#3b82f6");
+  const [brandFont, setBrandFont] = useState<string>("font-sans");
   const [logoText, setLogoText] = useState<string>("ACME CORP");
   const [logoType, setLogoType] = useState<"text" | "upload">("text");
   const [logoUrl, setLogoUrl] = useState<string | undefined>(undefined);
@@ -248,7 +249,7 @@ export default function App() {
 
         {/* Right: Immersive Laser Engraving Simulator Component */}
         <div className="lg:col-span-7">
-          <LaserSimulator logoText={logoText} brandColor={brandColor} />
+          <LaserSimulator logoText={logoText} brandColor={brandColor} brandFont={brandFont} />
         </div>
 
       </section>
@@ -332,6 +333,7 @@ export default function App() {
                       product={product}
                       activeTechnique={product.techniques[0]}
                       brandColor={brandColor}
+                      brandFont={brandFont}
                       logoText={logoText}
                       logoType={logoType}
                       logoUrl={logoUrl}
@@ -441,6 +443,8 @@ export default function App() {
             <HomePanel
               brandColor={brandColor}
               setBrandColor={setBrandColor}
+              brandFont={brandFont}
+              setBrandFont={setBrandFont}
               logoText={logoText}
               setLogoText={setLogoText}
               onNavigateToProducts={() => {
@@ -499,6 +503,7 @@ export default function App() {
           <ProductPDP
             product={activeProduct}
             brandColor={brandColor}
+            brandFont={brandFont}
             logoText={logoText}
             logoType={logoType}
             logoUrl={logoUrl}

@@ -6,6 +6,8 @@ import { Product } from "../types";
 interface HomePanelProps {
   brandColor: string;
   setBrandColor: (color: string) => void;
+  brandFont: string;
+  setBrandFont: (font: string) => void;
   logoText: string;
   setLogoText: (text: string) => void;
   onNavigateToProducts: () => void;
@@ -16,6 +18,8 @@ interface HomePanelProps {
 export function HomePanel({
   brandColor,
   setBrandColor,
+  brandFont,
+  setBrandFont,
   logoText,
   setLogoText,
   onNavigateToProducts,
@@ -103,96 +107,134 @@ export function HomePanel({
           </div>
 
           {/* Quick Config Inputs inside the welcome card */}
-          <div className="space-y-4 bg-neutral-950/60 p-4 rounded-xl border border-white/5">
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 block">
-                Nome da sua Empresa (Gravação)
+          <div className="space-y-4 bg-neutral-950/80 p-5 rounded-xl border border-white/5 shadow-2xl">
+            <div className="space-y-2">
+              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-400 block">
+                1. Nome da Empresa (Texto)
               </label>
               <input
                 type="text"
                 value={logoText}
                 onChange={(e) => setLogoText(e.target.value)}
-                placeholder="Insira o texto do logo"
-                className="w-full bg-[#0d0d0f] border border-white/10 focus:border-gold/40 rounded-lg px-3 py-2 text-xs text-stone-100 placeholder-neutral-600 focus:outline-none"
+                placeholder="Ex: OPUS STUDIO"
+                className="w-full bg-[#09090b] border border-white/10 focus:border-gold/50 rounded-lg px-4 py-2.5 text-xs text-white placeholder-neutral-600 focus:outline-none transition-all"
               />
             </div>
-
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 block">
-                Cor Institucional (HEX / Seletor)
+            
+            <div className="space-y-2">
+              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-400 block">
+                2. Tipografia Institucional
               </label>
-              <div className="flex gap-2">
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { id: "font-sans", label: "Moderna", cls: "font-sans" },
+                  { id: "font-serif", label: "Clássica", cls: "font-serif" },
+                  { id: "font-mono", label: "Técnica", cls: "font-mono" }
+                ].map(font => (
+                  <button
+                    key={font.id}
+                    onClick={() => setBrandFont(font.id)}
+                    className={`py-2 text-[10px] uppercase rounded-lg border transition-all ${brandFont === font.id ? "bg-white text-black border-white font-bold" : "bg-[#09090b] text-neutral-400 border-white/10 hover:border-white/30"}`}
+                  >
+                    <span className={font.cls}>{font.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-400 block flex items-center justify-between">
+                <span>3. Cor de Assinatura</span>
+                <span className="text-gold font-mono">{brandColor.toUpperCase()}</span>
+              </label>
+              <div className="flex flex-wrap gap-2 items-center">
+                {[
+                  "#D4AF37", "#3B82F6", "#EF4444", "#10B981", "#8B5CF6", "#FFFFFF"
+                ].map(preset => (
+                  <button
+                    key={preset}
+                    onClick={() => setBrandColor(preset)}
+                    className={`w-7 h-7 rounded-full border-2 transition-transform hover:scale-110 ${brandColor.toLowerCase() === preset.toLowerCase() ? "border-white scale-110" : "border-transparent"}`}
+                    style={{ backgroundColor: preset }}
+                  />
+                ))}
+                <div className="w-[1px] h-6 bg-white/10 mx-1" />
                 <input
                   type="color"
                   value={brandColor}
                   onChange={(e) => setBrandColor(e.target.value)}
-                  className="w-9 h-9 rounded border border-neutral-700 bg-transparent cursor-pointer"
-                />
-                <input
-                  type="text"
-                  maxLength={7}
-                  value={brandColor}
-                  onChange={(e) => setBrandColor(e.target.value.startsWith("#") ? e.target.value : `#${e.target.value}`)}
-                  className="flex-1 bg-[#0d0d0f] border border-white/10 focus:border-gold/40 rounded-lg px-3 py-2 text-xs text-stone-100 font-mono uppercase focus:outline-none"
+                  className="w-7 h-7 rounded border border-white/20 bg-transparent cursor-pointer p-0"
                 />
               </div>
             </div>
           </div>
 
-          <div className="text-[10px] text-neutral-500 font-mono leading-relaxed flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-teal-500" />
+          <div className="text-[9px] text-neutral-500 font-mono leading-relaxed flex items-center gap-1.5 uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>Sincronização global de marca ativa.</span>
           </div>
         </div>
 
         {/* Dynamic preview block */}
-        <div className="lg:col-span-7 bg-[#050505] border border-white/5 rounded-2xl p-6 flex flex-col justify-between space-y-6">
-          <div className="flex justify-between items-center border-b border-white/5 pb-4">
+        <div className="lg:col-span-7 bg-[#050505] border border-white/5 rounded-2xl p-6 flex flex-col space-y-6 overflow-hidden relative">
+          
+          <div className="flex justify-between items-center border-b border-white/5 pb-4 z-10 relative">
             <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">
-              Visualização Preliminar da Marca
+              Galeria de Aplicações Reais
             </span>
-            <span className="text-[9px] font-mono text-gold bg-gold/10 px-2 py-0.5 rounded uppercase font-semibold">
-              SISTEMA ATIVO
+            <span className="text-[9px] font-mono text-gold bg-gold/10 px-2 py-0.5 rounded uppercase font-semibold border border-gold/20 shadow-[0_0_10px_rgba(212,175,55,0.2)]">
+              RENDERIZANDO
             </span>
           </div>
 
           {/* Showcase of dynamic template branding */}
-          <div className="grid grid-cols-2 gap-4 my-auto">
-            {sampleProducts.slice(0, 2).map((prod) => (
-              <div 
-                key={prod.id} 
-                onClick={onNavigateToProducts}
-                className="group relative bg-[#09090b]/80 border border-white/5 hover:border-gold/30 rounded-xl p-4 flex flex-col items-center justify-between min-h-[180px] transition-all cursor-pointer"
-              >
-                <span className="text-[8px] font-mono text-neutral-500 self-start uppercase">
-                  {prod.name}
-                </span>
-
-                {/* Simulated high-fidelity customized branding on product item */}
-                <div className="w-16 h-16 rounded-full border border-dashed border-white/10 flex items-center justify-center relative my-2">
-                  <div 
-                    className="absolute inset-0 rounded-full opacity-25 blur-sm"
-                    style={{ backgroundColor: brandColor }}
-                  />
-                  <span 
-                    className="text-[9px] font-mono font-bold uppercase tracking-wider text-center max-w-[50px] truncate"
-                    style={{ color: brandColor }}
-                  >
-                    {logoText || "OPUS"}
-                  </span>
-                </div>
-
-                <span className="text-[8px] font-mono text-neutral-400 group-hover:text-gold transition-colors uppercase tracking-widest flex items-center gap-1">
-                  <span>Visualizar</span>
-                  <ArrowRight size={10} />
-                </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 z-10 relative">
+            
+            {/* Real Image Preview 1: Thermal Bottle */}
+            <div 
+              onClick={onNavigateToProducts}
+              className="group relative rounded-xl overflow-hidden border border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
+            >
+              <img src="/assets/images/garrafa_hero.jpg" alt="Garrafa Térmica" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                 <div className="mt-8 text-center mix-blend-plus-lighter" style={{ color: brandColor }}>
+                   <span className={`text-xl font-bold tracking-widest opacity-90 drop-shadow-lg ${brandFont}`}>
+                     {logoText || "OPUS"}
+                   </span>
+                 </div>
               </div>
-            ))}
-          </div>
 
-          <p className="text-[11px] text-neutral-500 leading-normal text-center">
-            Passe pelo catálogo interativo para inspecionar cada detalhe em <strong>alta fidelidade com fotos reais de estúdio</strong>, esquemas vetoriais e visualizadores 3D PBR WebGL completos.
-          </p>
+              <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+                <span className="text-[8px] font-mono text-white/70 uppercase tracking-wider">Gravação Laser<br/><strong className="text-white">Garrafa LED</strong></span>
+                <span className="text-[9px] font-mono text-gold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Ver Produto <ArrowRight size={10} /></span>
+              </div>
+            </div>
+
+            {/* Real Image Preview 2: Notebook */}
+            <div 
+              onClick={onNavigateToProducts}
+              className="group relative rounded-xl overflow-hidden border border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
+            >
+              <img src="/assets/images/moleskine_hero.jpg" alt="Caderno Moleskine" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                 <div className="mb-4 text-center opacity-80" style={{ color: brandColor }}>
+                   <span className={`text-2xl font-bold tracking-widest ${brandFont} [text-shadow:_0_2px_4px_rgb(0_0_0_/_50%)]`}>
+                     {logoText || "OPUS"}
+                   </span>
+                 </div>
+              </div>
+
+              <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+                <span className="text-[8px] font-mono text-white/70 uppercase tracking-wider">Debossing<br/><strong className="text-white">Moleskine Premium</strong></span>
+                <span className="text-[9px] font-mono text-gold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Ver Produto <ArrowRight size={10} /></span>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
