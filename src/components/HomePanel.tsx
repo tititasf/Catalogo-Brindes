@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Sparkles, ShieldCheck, Layers, Cpu, Compass, Building2, Paintbrush } from "lucide-react";
 import { Product } from "../types";
@@ -26,6 +26,9 @@ export function HomePanel({
   onOpenCuration,
   sampleProducts,
 }: HomePanelProps) {
+  const [logoScale, setLogoScale] = useState(1);
+  const [logoY, setLogoY] = useState(0);
+
   return (
     <div className="space-y-16 py-6">
       {/* Immersive Welcome Hero */}
@@ -167,6 +170,31 @@ export function HomePanel({
                 />
               </div>
             </div>
+
+            <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+              <div className="space-y-2">
+                <label className="text-[8px] font-mono uppercase tracking-[0.2em] text-neutral-400 block flex justify-between">
+                  <span>Escala</span>
+                  <span className="text-white">{(logoScale * 100).toFixed(0)}%</span>
+                </label>
+                <input 
+                  type="range" min="0.5" max="2" step="0.1" 
+                  value={logoScale} onChange={(e) => setLogoScale(parseFloat(e.target.value))}
+                  className="w-full accent-gold h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[8px] font-mono uppercase tracking-[0.2em] text-neutral-400 block flex justify-between">
+                  <span>Posição (Y)</span>
+                  <span className="text-white">{logoY > 0 ? `+${logoY}` : logoY}px</span>
+                </label>
+                <input 
+                  type="range" min="-80" max="80" step="5" 
+                  value={logoY} onChange={(e) => setLogoY(parseInt(e.target.value))}
+                  className="w-full accent-gold h-1 bg-neutral-800 rounded-lg appearance-none cursor-pointer"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="text-[9px] text-neutral-500 font-mono leading-relaxed flex items-center gap-1.5 uppercase tracking-wider">
@@ -190,7 +218,7 @@ export function HomePanel({
           {/* Showcase of dynamic template branding */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 z-10 relative">
             
-            {/* Real Image Preview 1: Thermal Bottle */}
+            {/* Real Image Preview 1: Thermal Bottle (Laser Engraving) */}
             <div 
               onClick={onNavigateToProducts}
               className="group relative rounded-xl overflow-hidden border border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
@@ -198,9 +226,27 @@ export function HomePanel({
               <img src="/assets/images/garrafa_hero.jpg" alt="Garrafa Térmica" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                 <div className="mt-8 text-center mix-blend-plus-lighter" style={{ color: brandColor }}>
-                   <span className={`text-xl font-bold tracking-widest opacity-90 drop-shadow-lg ${brandFont}`}>
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none perspective-500">
+                 <div 
+                   className="mt-8 text-center flex flex-col relative" 
+                   style={{ 
+                     color: brandColor, 
+                     transform: `scale(${logoScale}) translateY(${logoY}px) rotateX(15deg)`,
+                     transformStyle: 'preserve-3d'
+                   }}
+                 >
+                   {/* Laser reflection overlay animation */}
+                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-transparent animate-[shimmer_3s_infinite_linear] bg-[length:100%_200%] mix-blend-overlay" style={{ WebkitBackgroundClip: 'text', color: 'transparent' }}>
+                     <span className={`text-xl font-bold tracking-widest ${brandFont}`}>
+                       {logoText || "OPUS"}
+                     </span>
+                   </div>
+                   
+                   {/* Laser engraved base */}
+                   <span 
+                     className={`text-xl font-bold tracking-widest opacity-90 ${brandFont}`}
+                     style={{ textShadow: "0px 1px 1px rgba(255,255,255,0.4), 0px -1px 2px rgba(0,0,0,0.9)" }}
+                   >
                      {logoText || "OPUS"}
                    </span>
                  </div>
@@ -212,7 +258,7 @@ export function HomePanel({
               </div>
             </div>
 
-            {/* Real Image Preview 2: Notebook */}
+            {/* Real Image Preview 2: Notebook (Debossing) */}
             <div 
               onClick={onNavigateToProducts}
               className="group relative rounded-xl overflow-hidden border border-white/10 hover:border-gold/50 transition-all cursor-pointer min-h-[220px]"
@@ -221,8 +267,20 @@ export function HomePanel({
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                 <div className="mb-4 text-center opacity-80" style={{ color: brandColor }}>
-                   <span className={`text-2xl font-bold tracking-widest ${brandFont} [text-shadow:_0_2px_4px_rgb(0_0_0_/_50%)]`}>
+                 <div 
+                   className="mb-4 text-center opacity-85" 
+                   style={{ 
+                     color: brandColor,
+                     transform: `scale(${logoScale}) translateY(${logoY}px)`,
+                     mixBlendMode: "multiply"
+                   }}
+                 >
+                   <span 
+                     className={`text-2xl font-bold tracking-widest ${brandFont}`}
+                     style={{
+                       textShadow: "1px 1px 2px rgba(255,255,255,0.1), -1px -1px 2px rgba(0,0,0,0.7), inset 0px 2px 4px rgba(0,0,0,0.8)"
+                     }}
+                   >
                      {logoText || "OPUS"}
                    </span>
                  </div>

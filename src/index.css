@@ -11,6 +11,13 @@
   --color-bg-dark: #050505;
   --color-bg-card: #0c0c0c;
   --color-border-dim: rgba(255, 255, 255, 0.08);
+
+  --animate-shimmer: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 200%; }
 }
 
 /* Custom Scrollbar for Dark Corporate Theme */
