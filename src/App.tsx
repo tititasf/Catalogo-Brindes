@@ -110,8 +110,7 @@ export default function App() {
             </span>
           </div>
 
-          </div>
-
+          {/* Right Controls Container */}
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto p-2.5 rounded-2xl">
 
             {/* Theme Toggle EXPLICITO */}
@@ -424,6 +423,11 @@ export default function App() {
               setBrandFont={setBrandFont}
               logoText={logoText}
               setLogoText={setLogoText}
+              logoType={logoType}
+              setLogoType={setLogoType}
+              logoUrl={logoUrl}
+              setLogoUrl={setLogoUrl}
+              onLogoUpload={handleLogoUpload}
               onNavigateToProducts={() => {
                 setActiveTab("produtos");
                 window.scrollTo({ top: 0, behavior: "smooth" });
