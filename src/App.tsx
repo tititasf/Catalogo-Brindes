@@ -110,61 +110,9 @@ export default function App() {
             </span>
           </div>
 
-          {/* Interactive B2B Personalization Bar - The Psychological "Hack" */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto bg-white/90 dark:bg-black/90 p-2.5 rounded-2xl border border-black/10 dark:border-white/10 shadow-lg shadow-gold/5">
-            {/* Logo Text Input & Upload */}
-            <div className="relative w-full sm:w-64 flex items-center gap-1">
-              <div className="relative flex-1">
-                <span className="absolute left-3 top-2.5 text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
-                  Logo:
-                </span>
-                <input
-                  type="text"
-                  maxLength={18}
-                  value={logoText}
-                  onChange={(e) => {
-                    setLogoText(e.target.value);
-                    setLogoType("text");
-                  }}
-                  className="w-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/30 rounded-xl py-1.5 pl-12 pr-3 text-[11px] text-black dark:text-white font-mono uppercase tracking-wider"
-                  placeholder="DIGITE SUA MARCA"
-                />
-              </div>
-              
-              <label className="flex-shrink-0 cursor-pointer bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-gold hover:text-gold text-neutral-600 dark:text-neutral-400 p-2 rounded-xl transition-colors" title="Fazer upload do seu Logo (PNG transparente)">
-                <input type="file" accept="image/png, image/svg+xml" className="hidden" onChange={handleLogoUpload} />
-                <Upload size={14} />
-              </label>
-              
-              {logoType === "upload" && (
-                <button 
-                  onClick={() => setLogoType("text")}
-                  className="flex-shrink-0 bg-gold/20 text-gold p-2 rounded-xl border border-gold/30 hover:bg-gold/30 transition-colors"
-                  title="Voltar para logo em texto"
-                >
-                  <ImageIcon size={14} />
-                </button>
-              )}
-            </div>
+          </div>
 
-            {/* HEX Color Picker */}
-            <div className="flex items-center gap-2 w-full sm:w-auto bg-neutral-100/60 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl px-3 py-1.5">
-              <Palette size={12} className="text-neutral-500" />
-              <span className="text-[9px] font-mono text-neutral-500 uppercase">HEX da Empresa:</span>
-              <div className="flex items-center gap-1.5 ml-1">
-                <span 
-                  className="w-3.5 h-3.5 rounded-full border border-neutral-700 block shrink-0" 
-                  style={{ backgroundColor: brandColor }}
-                />
-                <input
-                  type="text"
-                  maxLength={7}
-                  value={brandColor}
-                  onChange={(e) => setBrandColor(e.target.value.startsWith("#") ? e.target.value : `#${e.target.value}`)}
-                  className="bg-transparent text-black dark:text-white font-mono text-[11px] focus:outline-none w-14 uppercase"
-                />
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto p-2.5 rounded-2xl">
 
             {/* Theme Toggle EXPLICITO */}
             <button 

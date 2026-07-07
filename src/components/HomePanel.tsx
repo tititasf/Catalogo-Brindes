@@ -10,6 +10,11 @@ interface HomePanelProps {
   setBrandFont: (font: string) => void;
   logoText: string;
   setLogoText: (text: string) => void;
+  logoType: "text" | "upload";
+  setLogoType: (type: "text" | "upload") => void;
+  logoUrl?: string;
+  setLogoUrl: (url: string | undefined) => void;
+  onLogoUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onNavigateToProducts: () => void;
   onOpenCuration: () => void;
   sampleProducts: Product[];
@@ -22,6 +27,11 @@ export function HomePanel({
   setBrandFont,
   logoText,
   setLogoText,
+  logoType,
+  setLogoType,
+  logoUrl,
+  setLogoUrl,
+  onLogoUpload,
   onNavigateToProducts,
   onOpenCuration,
   sampleProducts,
@@ -118,10 +128,52 @@ export function HomePanel({
               <input
                 type="text"
                 value={logoText}
-                onChange={(e) => setLogoText(e.target.value)}
+                onChange={(e) => {
+                  setLogoText(e.target.value);
+                  setLogoType("text");
+                }}
                 placeholder="Ex: OPUS STUDIO"
                 className="w-full bg-white dark:bg-[#09090b] border border-black/10 dark:border-white/10 focus:border-gold/50 rounded-lg px-4 py-2.5 text-xs text-black dark:text-white placeholder-neutral-600 focus:outline-none transition-all"
               />
+            </div>
+            
+            <div className="space-y-2">
+              <label className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400 flex items-center justify-between">
+                <span>1.5 Símbolo / Logo (Visual)</span>
+                {logoType === "upload" && (
+                  <button onClick={() => setLogoType("text")} className="text-gold text-[8px] hover:underline">USAR APENAS TEXTO</button>
+                )}
+              </label>
+              <div className="flex gap-2 items-center">
+                <label className="flex-1 flex flex-col items-center justify-center gap-1 p-3 bg-white dark:bg-[#09090b] border border-black/10 dark:border-white/10 hover:border-gold/50 rounded-lg cursor-pointer transition-colors group">
+                  <input type="file" accept="image/png, image/svg+xml" className="hidden" onChange={onLogoUpload} />
+                  <span className="text-[10px] font-medium text-black dark:text-white group-hover:text-gold transition-colors">Fazer Upload</span>
+                  <span className="text-[8px] text-neutral-500">PNG ou SVG (Fundo Transparente)</span>
+                </label>
+                
+                <div className="flex flex-col gap-1 w-1/3">
+                  <span className="text-[8px] text-neutral-500 text-center uppercase">Ou use exemplos:</span>
+                  <div className="flex justify-center gap-2">
+                    {[
+                      { id: "gen1", icon: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'></polygon><polyline points='2 17 12 22 22 17'></polyline><polyline points='2 12 12 17 22 12'></polyline></svg>` },
+                      { id: "gen2", icon: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><path d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'></path></svg>` },
+                      { id: "gen3", icon: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2L2 22h20L12 2z'></path></svg>` }
+                    ].map(generic => (
+                      <button
+                        key={generic.id}
+                        onClick={() => {
+                          setLogoUrl(`data:image/svg+xml;utf8,${generic.icon}`);
+                          setLogoType("upload");
+                        }}
+                        className={`w-8 h-8 flex items-center justify-center bg-white dark:bg-[#09090b] border rounded hover:border-gold/50 transition-colors ${logoType === "upload" && logoUrl?.includes(generic.id) ? "border-gold" : "border-black/10 dark:border-white/10"}`}
+                        title="Usar logo genérico"
+                      >
+                        <img src={`data:image/svg+xml;utf8,${generic.icon}`} alt="Generic Logo" className="w-5 h-5" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
             
             <div className="space-y-2">
