@@ -79,8 +79,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
       recommendedMaterial: "Ecobags, Canvas, Caixas Kraft e Embalagens",
       setupTime: "48 horas para gravação dos quadros serigráficos",
       sampleMaterial: "fabric",
-      sampleBg: "bg-neutral-800",
-      images: ["/assets/images/silk_macro.jpg"]
+      sampleBg: "bg-neutral-800"
     }
   ];
 

@@ -12,3 +12,20 @@
   --color-bg-card: #0c0c0c;
   --color-border-dim: rgba(255, 255, 255, 0.08);
 }
+
+/* Custom Scrollbar for Dark Corporate Theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+  border-left: 1px solid rgba(255,255,255,0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
