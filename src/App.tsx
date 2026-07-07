@@ -96,7 +96,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-[#050505] dark:text-neutral-200 font-sans antialiased selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black pb-12 transition-colors duration-300">
+    <div className="min-h-screen bg-white text-black dark:bg-[#050505] dark:text-neutral-200 font-sans antialiased selection:bg-black selection:text-black dark:text-white dark:selection:bg-white dark:selection:text-black pb-12 transition-colors duration-300">
       
       {/* 1. TOP PREMIUM SYNCHRONIZATION BAR */}
       <div className="sticky top-0 z-30 bg-white/85 dark:bg-black/85 backdrop-blur-md border-b border-black/10 dark:border-white/10 px-6 py-4">
@@ -198,7 +198,7 @@ export default function App() {
       </div>
 
       {/* 1.5 SUB-NAVIGATION TAB STRIP */}
-      <div className="sticky top-[73px] md:top-[81px] z-20 bg-[#070707]/95 backdrop-blur-md border-b border-black/5 dark:border-white/5 py-3 px-6 shadow-xl no-print">
+      <div className="sticky top-[73px] md:top-[81px] z-20 bg-white/95 dark:bg-[#070707]/95 backdrop-blur-md border-b border-black/5 dark:border-white/5 py-3 px-6 shadow-xl no-print">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex flex-wrap justify-center sm:justify-start gap-1">
             {[
@@ -340,7 +340,7 @@ export default function App() {
                   onMouseEnter={() => setHoveredProductId(product.id)}
                   onMouseLeave={() => setHoveredProductId(null)}
                   onClick={() => setActiveProduct(product)}
-                  className={`break-inside-avoid w-full bg-[#0a0a0a]/80 backdrop-blur-sm rounded-2xl border border-black/5 dark:border-white/5 hover:border-gold/35 p-5 flex flex-col justify-between transition-all duration-300 relative group cursor-pointer overflow-hidden ${heightClass}`}
+                  className={`break-inside-avoid w-full bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm rounded-2xl border border-black/5 dark:border-white/5 hover:border-gold/35 p-5 flex flex-col justify-between transition-all duration-300 relative group cursor-pointer overflow-hidden ${heightClass}`}
                 >
                   
                   {/* Subtle hover backlight */}

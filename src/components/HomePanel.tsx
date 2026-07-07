@@ -32,7 +32,7 @@ export function HomePanel({
   return (
     <div className="space-y-16 py-6">
       {/* Immersive Welcome Hero */}
-      <section className="relative rounded-3xl border border-black/5 dark:border-white/5 overflow-hidden bg-[#030303]">
+      <section className="relative rounded-3xl border border-black/5 dark:border-white/5 overflow-hidden bg-white dark:bg-[#030303]">
         {/* Subtle dynamic background glow in sync with brand color */}
         <div 
           className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full blur-[120px] opacity-15 pointer-events-none transition-all duration-1000"
@@ -95,7 +95,7 @@ export function HomePanel({
 
       {/* Interactive Brand Personalization Gateway (The Smart Tool Setup card) */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        <div className="lg:col-span-5 bg-[#070707]/90 border border-black/5 dark:border-white/5 rounded-2xl p-6 flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-5 bg-white/90 dark:bg-[#070707]/90 border border-black/5 dark:border-white/5 rounded-2xl p-6 flex flex-col justify-between space-y-6">
           <div className="space-y-2">
             <div className="flex items-center gap-1.5 text-gold text-[10px] font-mono uppercase tracking-wider">
               <Paintbrush size={12} />
@@ -120,7 +120,7 @@ export function HomePanel({
                 value={logoText}
                 onChange={(e) => setLogoText(e.target.value)}
                 placeholder="Ex: OPUS STUDIO"
-                className="w-full bg-[#09090b] border border-black/10 dark:border-white/10 focus:border-gold/50 rounded-lg px-4 py-2.5 text-xs text-black dark:text-white placeholder-neutral-600 focus:outline-none transition-all"
+                className="w-full bg-white dark:bg-[#09090b] border border-black/10 dark:border-white/10 focus:border-gold/50 rounded-lg px-4 py-2.5 text-xs text-black dark:text-white placeholder-neutral-600 focus:outline-none transition-all"
               />
             </div>
             
@@ -137,7 +137,7 @@ export function HomePanel({
                   <button
                     key={font.id}
                     onClick={() => setBrandFont(font.id)}
-                    className={`py-2 text-[10px] uppercase rounded-lg border transition-all ${brandFont === font.id ? "bg-white text-black border-black dark:border-white font-bold" : "bg-[#09090b] text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10 hover:border-black/30 dark:border-white/30"}`}
+                    className={`py-2 text-[10px] uppercase rounded-lg border transition-all ${brandFont === font.id ? "bg-white text-black border-black dark:border-white font-bold" : "bg-white dark:bg-[#09090b] text-neutral-600 dark:text-neutral-400 border-black/10 dark:border-white/10 hover:border-black/30 dark:border-white/30"}`}
                   >
                     <span className={font.cls}>{font.label}</span>
                   </button>
@@ -204,7 +204,7 @@ export function HomePanel({
         </div>
 
         {/* Dynamic preview block */}
-        <div className="lg:col-span-7 bg-[#050505] border border-black/5 dark:border-white/5 rounded-2xl p-6 flex flex-col space-y-6 overflow-hidden relative">
+        <div className="lg:col-span-7 bg-white dark:bg-[#050505] border border-black/5 dark:border-white/5 rounded-2xl p-6 flex flex-col space-y-6 overflow-hidden relative">
           
           <div className="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-4 z-10 relative">
             <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
@@ -308,7 +308,7 @@ export function HomePanel({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
+          <div className="p-6 bg-white/70 dark:bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
             <div className="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold">
               <Cpu size={14} />
             </div>
@@ -320,7 +320,7 @@ export function HomePanel({
             </p>
           </div>
 
-          <div className="p-6 bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
+          <div className="p-6 bg-white/70 dark:bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
             <div className="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold">
               <Layers size={14} />
             </div>
@@ -332,7 +332,7 @@ export function HomePanel({
             </p>
           </div>
 
-          <div className="p-6 bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
+          <div className="p-6 bg-white/70 dark:bg-[#070707]/70 border border-black/5 dark:border-white/5 rounded-xl space-y-3 hover:border-black/10 dark:border-white/10 transition-colors">
             <div className="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold">
               <ShieldCheck size={14} />
             </div>

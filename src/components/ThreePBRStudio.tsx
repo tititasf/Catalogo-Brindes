@@ -549,7 +549,7 @@ export function ThreePBRStudio({
   }, [logoText, brandColor, activeTechnique, logoType, logoUrl]);
 
   return (
-    <div className="relative w-full h-full min-h-[340px] flex items-center justify-center bg-[#030303] overflow-hidden rounded-2xl border border-black/5 dark:border-white/5">
+    <div className="relative w-full h-full min-h-[340px] flex items-center justify-center bg-white dark:bg-[#030303] overflow-hidden rounded-2xl border border-black/5 dark:border-white/5">
       {/* Dynamic 3D Mount Node */}
       <div ref={mountRef} className="w-full h-full min-h-[340px] cursor-grab active:cursor-grabbing" />
 

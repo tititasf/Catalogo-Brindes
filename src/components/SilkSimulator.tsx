@@ -58,8 +58,8 @@ export const SilkSimulator: React.FC<SilkSimulatorProps> = ({ logoText, brandCol
                 className="absolute w-40 h-6 flex flex-col items-center z-30"
                 style={{ top: `${15 + (printProgress / 100) * 55}%` }}
               >
-                <div className="w-24 h-3 bg-[#8b5a2b] rounded-t-sm shadow-md" />
-                <div className="w-40 h-3 bg-[#d2b48c] border-b-2 border-amber-900/50 shadow-lg flex justify-center relative">
+                <div className="w-24 h-3 bg-white dark:bg-[#8b5a2b] rounded-t-sm shadow-md" />
+                <div className="w-40 h-3 bg-white dark:bg-[#d2b48c] border-b-2 border-amber-900/50 shadow-lg flex justify-center relative">
                    <div className="absolute bottom-0 w-32 h-1 blur-[1px]" style={{ backgroundColor: brandColor }} />
                 </div>
               </motion.div>

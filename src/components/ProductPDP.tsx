@@ -140,7 +140,7 @@ export const ProductPDP: React.FC<ProductPDPProps> = ({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
-        className="bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-3xl w-full max-w-5xl overflow-hidden shadow-2xl relative my-8"
+        className="bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-3xl w-full max-w-5xl overflow-hidden shadow-2xl relative my-8"
       >
         {/* Subtle decorative top lighting bar */}
         <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-65" />

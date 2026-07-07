@@ -104,7 +104,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative"
+        className="bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative"
       >
         {/* Header bar */}
         <div className="p-6 border-b border-black/5 dark:border-white/5 flex justify-between items-center bg-white/60 dark:bg-black/60">
@@ -397,7 +397,7 @@ Aguardando contato do Arquiteto Corporativo em até 2 horas úteis.`;
                 `}} />
 
                 {/* Simulated Certificate Board */}
-                <div id="printable-curation-brief-card" className="w-full max-w-2xl bg-[#0a0a0a] border border-gold/25 rounded-2xl p-6 text-left relative overflow-hidden font-mono text-[11px] space-y-4 shadow-lg shadow-gold/5">
+                <div id="printable-curation-brief-card" className="w-full max-w-2xl bg-white dark:bg-[#0a0a0a] border border-gold/25 rounded-2xl p-6 text-left relative overflow-hidden font-mono text-[11px] space-y-4 shadow-lg shadow-gold/5">
                   {/* Subtle diagonal background stamp */}
                   <div className="absolute right-[-40px] bottom-[-20px] text-[72px] font-bold text-gold/5 uppercase select-none tracking-widest rotate-[-12deg]">
                     B2B VIP

@@ -432,7 +432,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
     };
 
     return (
-      <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-[#070707] flex items-center justify-center shadow-inner group">
+      <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-white dark:bg-[#070707] flex items-center justify-center shadow-inner group">
         
         {/* Real Product Image from Unsplash or high-fidelity placeholder fallback */}
         {!imageError ? (
@@ -444,7 +444,7 @@ export const ProductVisualizer: React.FC<ProductVisualizerProps> = ({
             referrerPolicy="no-referrer"
           />
         ) : (
-          <div className="absolute inset-0 bg-[#0c0c0e] flex flex-col items-center justify-between p-6 border border-black/5 dark:border-white/5 rounded-2xl w-full h-full">
+          <div className="absolute inset-0 bg-white dark:bg-[#0c0c0e] flex flex-col items-center justify-between p-6 border border-black/5 dark:border-white/5 rounded-2xl w-full h-full">
             {/* Top info */}
             <div className="w-full flex justify-between items-center text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
               <span>Estúdio de Validação Digital</span>

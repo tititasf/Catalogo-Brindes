@@ -128,7 +128,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
       case "debossing":
         return (
-          <div className="relative w-full h-44 rounded-2xl bg-[#2e1d11] border border-[#1f130a] flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative w-full h-44 rounded-2xl bg-white dark:bg-[#2e1d11] border border-[#1f130a] flex flex-col items-center justify-center overflow-hidden">
             {/* Leather fine grain texture background */}
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000000_2px,transparent_2px)] bg-[size:8px_8px] pointer-events-none" />
             <div className="absolute top-2 left-2 text-[8px] font-mono text-stone-500 uppercase tracking-widest">
@@ -143,7 +143,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
               >
                 {safeText}
               </h5>
-              <div className="w-14 h-[1.5px] bg-[#140b05] mx-auto opacity-30 shadow-[0_1px_0_rgba(255,255,255,0.05)]" />
+              <div className="w-14 h-[1.5px] bg-white dark:bg-[#140b05] mx-auto opacity-30 shadow-[0_1px_0_rgba(255,255,255,0.05)]" />
               <span className="text-[7.5px] font-mono text-stone-500 block uppercase tracking-wider">
                 Pressed Depth: 1.25mm
               </span>
@@ -188,7 +188,7 @@ export function ServicesPanel({ logoText, brandColor }: ServicesPanelProps) {
 
       case "uv":
         return (
-          <div className="relative w-full h-44 rounded-2xl bg-[#0d0d0d] border border-neutral-100 dark:border-neutral-900 flex flex-col items-center justify-center overflow-hidden">
+          <div className="relative w-full h-44 rounded-2xl bg-white dark:bg-[#0d0d0d] border border-neutral-100 dark:border-neutral-900 flex flex-col items-center justify-center overflow-hidden">
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
             <div className="absolute top-2 left-2 text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
               Amostra: Polímero Fosco Antiderrapante Matte
